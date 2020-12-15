@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
+:root {
+  --header-color: #9fd3c7be;
+}
+
+body {
+  margin: 0;
+  font-family: 'Source Sans Pro', sans-serif;;
+}
+
+header {
+  text-align: center;
+  background: var(--header-color);
+  position: fixed;
+  z-index: 999;
+  width: 100vw;
+  height: 10vh;
+}
+
+nav {
+  position: absolute;
+  top: 100%;
+  list-style: none;
+  margin: 0;
+  text-align: left;
+  background-color: var(--header-color);
+  width: 100vw;
+  display: none;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  
+}
+
+nav li {
+  margin: .5em 1em;
+}
+
+nav a {
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #142d4c;
+  font-weight: 500;
+}
+
+#hambox {
+  display: none
+}
+
+#hambox:checked ~ nav{
+  display: block;
+}
+
+.hamburger span{
+  position: absolute;
+  top: 50%;
+  margin: 0 0 0 1em;
+  padding: 0;
+}
+
+.hamburger span,
+.hamburger span::before,
+.hamburger span::after {
+  display: block;
+  background: white;
+  height: 2px;
+  width: 2em;
+  border-radius: 30%;
+}
+
+.hamburger span::before,
+.hamburger span::after {
+  content: '';
+  position: absolute;
+}
+
+.hamburger span::after {
+  top: 7px;
+}
+
+.hamburger span::before {
+  bottom: 7px;
+}
