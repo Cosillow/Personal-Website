@@ -1,0 +1,10 @@
+{
+    "projects": [
+        {
+            "name": "Personal Website",
+            "tags": ["HTML", "CSS", "JS"],
+            "description": "This was the first personal project I took on. After taking intro to web design in my first semester at RPI, I became intrigued by what I could do with the web. After a lot more research on my own, I came up with this final product (which I'm sure may change in the future).",
+            "link": "index.html"
+        }
+    ]
+}
