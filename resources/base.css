@@ -1,39 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400&display=swap');
 
 :root {
-  --dark: #3e4145;
+  --background: #3e4145;
   --accent: #e07800;
 }
 
-* {
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
   font-family: 'Kanit', sans-serif;
+  background-color: var(--background);
+  color: white;
 }
 
 header {
   display: flex;
   align-items: center;
   text-align: center;
-  background: var(--dark);
+  background: var(--background);
   position: fixed;
   top: 0;
   z-index: 999;
   width: 100vw;
   height: 10vh;
-}
-
-section:first-of-type::before {
-  position: relative;
-  content: ' ';
-  display: block;
-  width: 100%;
-  height: 10vh;
-  background-color: blue;
-  
 }
 
 nav {
@@ -42,12 +34,39 @@ nav {
   list-style: none;
   margin: 0;
   text-align: left;
-  background-color: var(--dark);
+  background-color: var(--background);
   width: 100vw;
   transform: scale(1,0);
   transform-origin: top;
-  transition: transform 200ms ease-in-out;
-  
+  transition: transform 200ms ease-in-out; 
+}
+
+nav::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 90%;
+  margin-left: 5%;
+  height: 2px;
+  display: block;
+  background-color: white;
+}
+
+.bar {
+  position: absolute;
+  bottom: 0;
+  width: 90%;
+  margin-left: 5%;
+  height: 2px;
+  display: block;
+  background-color: white;
+  opacity: 1;
+  transition: opacity .01ms 200ms ease-in-out;
+}
+
+#hambox:checked ~ .bar{
+  opacity: 0;
+  transition: opacity .01ms 0ms ease-in-out;
 }
 
 nav ul {
@@ -160,6 +179,15 @@ nav a:hover {
   bottom: calc(50% - 3px);
 }
 
+section:first-of-type::before {
+  position: relative;
+  content: ' ';
+  display: block;
+  width: 100%;
+  height: 10vh;
+  background-color: var(--background);
+}
+
 /* Projects */
 
 .projects {
@@ -206,7 +234,7 @@ nav a:hover {
 }
 
 .tag {
-  background-color: var(--dark);
+  background-color: var(--background);
   width: 70px;
   border-radius: 10%;
   opacity: 0;
@@ -282,12 +310,13 @@ h3 {
 
 .card {
   background-color: var(--accent);
-  width: 75vw;
+  width: 250px;
   border-radius: .75em;
+  color: black;
 }
 
 .card + .card {
-  margin-top: 2em;
+  margin-top: 3em;
 }
 
 .card ul {
