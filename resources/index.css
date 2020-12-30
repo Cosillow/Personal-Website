@@ -1,0 +1,46 @@
+.hero {
+  padding-top: 10vh;
+  background-image: url(../resources/profile.png);
+  background-color: var(--accent);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 25vh;
+  width: 100%;
+  }
+
+.about {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  text-align: center;
+}
+
+.card {
+  background-color: var(--accent);
+  width: 250px;
+  border-radius: .75em;
+  color: black;
+}
+
+.card + .card {
+  margin-top: 3em;
+}
+
+.card ul {
+  margin: 0;
+  padding: 0;
+  padding-bottom: 1em;
+}
+
+.card li {
+  list-style: none;
+}
+
+.card li + li {
+  padding-top: .75em;
+}
+
+.title-card {
+  margin: 1.25em 0;
+}

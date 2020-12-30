@@ -1,6 +1,7 @@
 $(document).ready(function() {
   document.getElementById("infobox").checked = false;
   var response = '';
+  // puts all project cards on the page and stores project info in var response
   $.ajax({
     type: "GET",
     url: "projects.json",
