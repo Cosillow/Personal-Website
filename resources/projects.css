@@ -2,7 +2,14 @@
   margin: 0 10vw 0 10vw;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  grid-gap: 20vh 2vw;
+  grid-gap: 10vh 2vw;
+}
+
+.title {
+  text-align: center;
+  margin: 1.5em .25em 1em .25em;
+  font-size: 3em;
+  /* color: var(--accent); */
 }
 
 .project {
@@ -10,6 +17,7 @@
   position: relative;
   background-color: var(--accent);
   height: 25vh;
+  border-radius: 8px;
 }
 
 .project:hover {
@@ -23,6 +31,7 @@
   object-fit: cover;
   opacity: 1;
   transition: 200ms ease-in-out;
+  border-radius: 8px;
 }
 
 .project:hover img {
