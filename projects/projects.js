@@ -30,25 +30,13 @@ $(document).ready(function() {
     currentproj = $(this).html().split('</p>')[0].split('<p>')[1]
     $.each(response.projects, function(i, project) {
       if (project.name == currentproj) {
-        output = '<label id="info-back" name="info-back" for="infobox">back</label><h3>' + project.name + '</h3>';
-        console.log(Math.max(project.descriptions.length, project.images.length));
-        for (var i = 0; i < Math.max(project.descriptions.length, project.images.length); i++) { 
-          console.log(i);
-          if (i < project.descriptions.length) {
-            output += '<p>' + project.descriptions[i] + '</p>';
-          }
-          if (i < project.images.length) {
-            output += '<img src="' + project.images[i] + '" alt="project image"';
-          }
-        }
+        output = '<label id="info-back" name="info-back" for="infobox">&#8593;</label><h1>' + project.name + '</h1>';
+        output += '<img src="' + project.image + '" alt="project image">';
+        output += '<p>' + project.description + '</p>';
+        output += '<a href="' + project.link + '" class="visit">visit</a>';
         $(".info").html(output);
         document.getElementById("infobox").checked = true;
       }
     });
-    setTimeout(function(){document.getElementById("content").style.display = "none";}, 200);
-  });
-  $(document).on("click", ".info label", function() {
-    document.getElementById("content").style.display = "block";
-    setTimeout(function(){$('.info').html('');;}, 200);
   });
 });

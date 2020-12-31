@@ -2,6 +2,7 @@
 
 :root {
   --background: #3e4145;
+  --background-light: #545557;;
   --accent: #BF8620;
   /* Original accent #e07800 */
 }
@@ -46,8 +47,7 @@ nav::after {
   content: '';
   position: absolute;
   bottom: 0;
-  width: 90%;
-  margin-left: 5%;
+  width: 100%;
   height: 2px;
   display: block;
   background-color: white;
@@ -56,8 +56,7 @@ nav::after {
 .bar {
   position: absolute;
   bottom: 0;
-  width: 90%;
-  margin-left: 5%;
+  width: 100%;
   height: 2px;
   display: block;
   background-color: white;
@@ -74,7 +73,6 @@ nav ul {
   margin: 0;
   padding: 0;
   list-style-type: none;
-  
 }
 
 nav li {

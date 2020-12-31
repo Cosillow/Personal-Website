@@ -44,9 +44,9 @@
 .tag {
   background-color: var(--background);
   width: 70px;
-  border-radius: 10%;
+  border-radius: 3px;
   opacity: 0;
-  transition: 100ms 100ms ease-in-out;
+  transition: opacity 100ms 100ms ease-in-out;
 }
 
 .project:hover .tag {
@@ -62,29 +62,78 @@
   text-align: center;
 }
 
-.info {
-  margin-top: 10vh;
-  position: absolute;
-  right: 100%;
-  transition: right 200ms ease-in-out;
+#content {
+  position: relative;
+  left: 0; 
+  min-height: 100vh;
 }
 
 #infobox {
   display: none;
 }
 
+.info {
+  background-color: var(--background-light);
+  position: absolute;
+  bottom: calc(100% + 5px);
+  z-index: 9999;
+  overflow: hidden;
+  border-radius: 0 0 10vmin 10vmin;
+  transform: translateY(0);
+  width: calc(98% - 20px);
+  margin-left: calc(1% + 10px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 0 0 0 black;
+  transition: transform 200ms ease-in-out, box-shadow 0ms 200ms;
+}
+
 #infobox:checked ~ .info {
-  right: 0;
+  transform: translateY(calc(100% + 5px));
+  box-shadow: 0px 3px 15px rgba(0,0,0,0.5);
+  transition: box-shadow 0ms 0ms, transform 200ms ease-in-out;
 }
 
-#content {
-  position: relative;
-  left: 0; 
-  transition: left 200ms ease-in-out;
-  min-height: 100vh;
+.info label{
+  box-sizing: content-box;
+  display: block;
+  position: absolute;
+  top: 0;
+  font-size: 2em;
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-align: center;
+  transform: translateY(0);
+  transition: transform 200ms ease-out;
 }
 
-#infobox:checked ~ #content {
-  left: 100%;
+.info label:hover {
+  cursor: pointer;
+  transform: translateY(-10px);
+}
 
+.info h1 {
+  margin: 4em 0 2em;
+}
+
+.info img {
+  width: 80%;
+}
+
+.info p {
+  margin-top: 2em;
+  padding: 0 1em;
+}
+
+.visit {
+  text-decoration: none;
+  color: white;
+  display: block;
+  background-color: var(--accent);
+  width: 5em;
+  padding: .5em 0;
+  border-radius: 5px;
+  text-align: center;
+  margin: 1em 0 2em;
 }

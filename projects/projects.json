@@ -3,18 +3,18 @@
         {
             "name": "Personal Website",
             "tags": ["HTML", "CSS", "JS"],
-            "descriptions": ["This was the first personal project I took on. After taking intro to web design in my first semester at RPI, I became intrigued by what I could do with the web. After a lot more research on my own, I came up with this final product (which I'm sure may change in the future)."],
-            "link": "index.html",
+            "description": "This was the first personal project I took on. After taking intro to web design in my first semester at RPI, I became intrigued by what I could do with the web. After a lot more research on my own, I came up with this final product (which I'm sure may change in the future).",
+            "link": "../index.html",
             "thumbnail": "images/personal.PNG",
-            "images": ["images/personal.PNG"]
+            "image": "images/personal.PNG"
         },
         {
-            "name": "Personal ds",
+            "name": "Personal Bebsite",
             "tags": ["HTML", "CSS", "JS"],
-            "descriptions": ["yoooooooooooooooooooooooo", "yep", "again a yes", "lastly yea"],
-            "link": "index.html",
+            "description": "This was the first personal project I took on. After taking intro to web design in my first semester at RPI, I became intrigued by what I could do with the web. After a lot more research on my own, I came up with this final product (which I'm sure may change in the future).This was the first personal project I took on. After taking intro to web design in my first semester at RPI, I became intrigued by what I could do with the web. After a lot more research on my own, I came up with this final product (which I'm sure may change in the future).This was the first personal project I took on. After taking intro to web design in my first semester at RPI, I became intrigued by what I could do with the web. After a lot more research on my own, I came up with this final product (which I'm sure may change in the future).This was the first personal project I took on. After taking intro to web design in my first semester at RPI, I became intrigued by what I could do with the web. After a lot more research on my own, I came up with this final product (which I'm sure may change in the future).This was the first personal project I took on. After taking intro to web design in my first semester at RPI, I became intrigued by what I could do with the web. After a lot more research on my own, I came up with this final product (which I'm sure may change in the future).This was the first personal project I took on. After taking intro to web design in my first semester at RPI, I became intrigued by what I could do with the web. After a lot more research on my own, I came up with this final product (which I'm sure may change in the future).This was the first personal project I took on. After taking intro to web design in my first semester at RPI, I became intrigued by what I could do with the web. After a lot more research on my own, I came up with this final product (which I'm sure may change in the future).This was the first personal project I took on. After taking intro to web design in my first semester at RPI, I became intrigued by what I could do with the web. After a lot more research on my own, I came up with this final product (which I'm sure may change in the future).This was the first personal project I took on. After taking intro to web design in my first semester at RPI, I became intrigued by what I could do with the web. After a lot more research on my own, I came up with this final product (which I'm sure may change in the future).",
+            "link": "../index.html",
             "thumbnail": "images/personal.PNG",
-            "images": ["images/personal.PNG", "images/personal.PNG", "images/personal.PNG"]
+            "image": "images/personal.PNG"
         }
     ]
 }

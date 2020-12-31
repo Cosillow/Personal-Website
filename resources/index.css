@@ -1,3 +1,16 @@
+.intro h1 {
+  margin-left: 15%;
+  font-size: 3em;
+}
+
+.intro h1 span {
+  color: var(--accent);
+}
+
+.intro p {
+  margin-left: 15%;
+}
+
 .hero {
   padding-top: 10vh;
   background-image: url(../resources/profile.png);
@@ -21,6 +34,7 @@
   width: 250px;
   border-radius: .75em;
   color: black;
+  box-shadow: 0px 3px 15px rgba(0,0,0,0.5);
 }
 
 .card + .card {
