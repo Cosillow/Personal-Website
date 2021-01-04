@@ -1,6 +1,17 @@
+.intro {
+  min-height: 100vh;
+}
+
 .intro h1 {
-  margin-left: 15%;
+  /* margin-left: 15%; */
+  margin-top: 1em;
+  text-align: center;
   font-size: 3em;
+}
+
+.intro h1 + h1{
+  /* margin-left: 15%; */
+  margin-top: .01em;
 }
 
 .intro h1 span {
@@ -8,22 +19,30 @@
 }
 
 .intro p {
-  margin-left: 15%;
+  /* margin-left: 15%; */
+  margin: 0 1em;
+  text-align: center;
 }
 
 .intro img {
   display: block;
-  height: 40vmax;
+  height: 40vh;
   border-radius: 5px;
+  margin-top: 2em;
   margin-left: auto;
   margin-right: auto;
 }
 
 .about {
+  margin-top: 5vh;
   display: flex;
   flex-flow: column;
   align-items: center;
   text-align: center;
+}
+
+.about-title {
+  font-size: 2em;
 }
 
 .card {

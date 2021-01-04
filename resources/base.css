@@ -204,13 +204,10 @@ footer a {
   margin-top: 10px;
 }
 
-#linked-in {
-  padding: .001em .20em;
-  color: white;
-  border-radius: 2px;
-  border: 2px solid white;
+.socials img {
+  height: 40px;
 }
 
-.socials img {
-  width: 40px;
+.socials a + a {
+  margin-left: 20px;
 }
