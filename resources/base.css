@@ -3,8 +3,9 @@
 :root {
   --background: #3e4145;
   --background-light: #545557;;
-  --accent: #BF8620;
-  /* Original accent #e07800 */
+  /* --accent: #BF8620; too bland*/
+  /* --accent: #e07800; too red*/
+  --accent: #d1930c;
 }
 
 *, *::before, *::after {
@@ -210,4 +211,36 @@ footer a {
 
 .socials a + a {
   margin-left: 20px;
+}
+
+@media all and (min-width: 1000px) {
+  nav {
+    position: absolute;
+    top: 0;
+    list-style: none;
+    margin: 0;
+    margin-top: 5px;
+    text-align: left;
+    background-color: var(--background);
+    width: 100vw;
+    transform: scale(1,1);
+    transform-origin: top;
+    transition: transform 200ms ease-in-out; 
+  }
+
+  nav ul {
+    display: flex;
+  }
+
+  nav li {
+    opacity: 1;
+  }
+
+  nav::after {
+    display: none;
+  }
+
+  .hamburger {
+    display: none;
+  }
 }
