@@ -9,12 +9,20 @@
             "image": "images/personal.PNG"
         },
         {
-            "name": "NES-media Photography",
-            "tags": ["HTML", "CSS", "JS"],
-            "description": "After diving more into these web technologies, I was confident enough to work on a project for a client. This gave me experience in working towards someone elses goals, as well as communicating my needs and what can be done in the scope of a project.",
-            "link": "https://nes-media.netlify.app/",
+            "name": "Contact-Me",
+            "tags": ["HTML", "CSS", "JS", "PHP", "MySQL"],
+            "description": "After diving more into these web technologies, I was confident enough to work on a project for a client. This gave me experience in working towards someone else's goals, as well as communicating my needs and what can be done in the scope of a project.",
+            "link": "https://github.com/Group-2-F21-Web-Systems-Development/contact-me",
             "thumbnail": "images/NES-media.PNG",
             "image": "images/NES-media.PNG"
+        },
+        {
+            "name": "NES-media Photography",
+            "tags": ["HTML", "CSS", "JS"],
+            "description": "After diving more into these web technologies, I was confident enough to work on a project for a client. This gave me experience in working towards someone else's goals, as well as communicating my needs and what can be done in the scope of a project.",
+            "link": "https://nes-media.netlify.app/",
+            "thumbnail": "images/contact-me.PNG",
+            "image": "images/contact-me.PNG"
         }
     ]
 }
