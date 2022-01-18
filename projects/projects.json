@@ -11,7 +11,7 @@
         {
             "name": "Contact-Me",
             "tags": ["HTML", "CSS", "JS", "PHP", "MySQL"],
-            "description": "After diving more into these web technologies, I was confident enough to work on a project for a client. This gave me experience in working towards someone else's goals, as well as communicating my needs and what can be done in the scope of a project.",
+            "description": "In my second web development class at RPI, I was assined a group to work on a term project with. We created Contact-Me, a web application that exists as a \"virtual business card\". This was the first project I took a deep dive into backend work, which allowed me to get a stronger understanding of PHP and MySQL.",
             "link": "https://github.com/Group-2-F21-Web-Systems-Development/contact-me",
             "thumbnail": "images/NES-media.PNG",
             "image": "images/NES-media.PNG"
