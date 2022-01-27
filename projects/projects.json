@@ -11,7 +11,7 @@
         {
             "name": "Contact-Me",
             "tags": ["HTML", "CSS", "JS", "PHP", "MySQL"],
-            "description": "In my second web development class at RPI, I was assined a group to work on a term project with. We created Contact-Me, a web application that exists as a \"virtual business card\". This was the first project I took a deep dive into backend work, which allowed me to get a stronger understanding of PHP and MySQL.",
+            "description": "In my second web development class at RPI, I was assigned a group to work on a term project with. We created Contact-Me, a web application that exists as a \"virtual business card\". This was the first project where I took a deep dive into backend work, which allowed me to get a stronger understanding of PHP and MySQL.",
             "link": "https://github.com/Group-2-F21-Web-Systems-Development/contact-me",
             "thumbnail": "images/contact-me.PNG",
             "image": "images/contact-me.PNG"
