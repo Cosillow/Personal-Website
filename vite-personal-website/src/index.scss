@@ -1,0 +1,21 @@
+// import my own styles library
+// @import "./styles/index.scss";
+
+
+:root {
+    --color-primary: grey;
+    --color-primary-contrast: rgb(255, 255, 255);
+
+    --color-secondary: rgb(146, 146, 255);
+    --color-secondary-contrast: rgb(255, 255, 255);
+
+    --color-accent: orange;
+    --color-accent-contrast: rgb(0, 0, 0);
+
+
+    --font-xs: clamp(1rem, 1rem + 5vw , 2rem);
+    --font-sm: clamp(2rem, 1rem + 5vw , 3rem);
+    --font-md: clamp(3rem, 1rem + 5vw , 4rem);
+    --font-lg: clamp(4rem, 1rem + 5vw , 5rem);
+    --font-xl: clamp(5rem, 1rem + 5vw , 6rem);
+}

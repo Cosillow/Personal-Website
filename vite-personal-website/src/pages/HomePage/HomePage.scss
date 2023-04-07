@@ -1,0 +1,23 @@
+body {
+    --margin-bottom-hero: 6em;
+    text-align: center;
+}
+
+#hero {
+    height: 100dvh;
+    padding-bottom: var(--margin-bottom-hero);
+
+    #hero-image {
+        max-height: calc(100dvh - var(--margin-bottom-hero));
+            display: block;
+            margin: auto;
+    }
+}
+
+.shift-upwards {
+    transform: translateY(calc(-1* var(--margin-bottom-hero)));
+}
+
+#how-section {
+    background: hsla(0, 63%, 64%, 0.4)
+}
