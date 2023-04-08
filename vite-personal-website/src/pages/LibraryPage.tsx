@@ -1,5 +1,3 @@
-import "./LibraryPage.scss"
-
 const LibraryPage = () => {
     return (
         <>

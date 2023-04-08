@@ -1,4 +1,4 @@
-import FirstProjects from "../../../pages/ProjectsPages/FirstProjects/FirstProjects";
+import FirstProjects from "../../pages/ProjectsPages/FirstProjects";
 
 const projects: any[] = [
     {

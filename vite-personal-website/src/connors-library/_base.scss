@@ -28,7 +28,20 @@ a {
 }
 
 button {
+  font-size: 1rem;
+  font-weight: 900;
+  padding: 1em 2em;
   cursor: pointer;
+  border: 2px solid var(--color-accent-contrast);
+  background: var(--color-accent);
+  color: var(--color-accent-contrast);
+  border-radius: var(--border-md);
+}
+
+button.outline {
+  border: .16em solid var(--color-accent);
+  background: transparent;
+  color: var(--color-accent);
 }
 
 hr {

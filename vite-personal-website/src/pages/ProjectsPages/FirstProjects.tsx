@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "./FirstProject.scss";
+import styled from "styled-components";
 
 type projectCardProps = {
     "name": string,
@@ -9,9 +9,19 @@ type projectCardProps = {
     "thumbnail": string
     "image": string
 }
+
+const ProjectCard = styled.article`
+    padding: 3em;
+    border-radius: 50px;
+    & + .projectCard {
+        margin-top: 4em;
+    }
+`
+
+
 const projectCard = (props: projectCardProps) => {
     return (
-        <div className="bg-secondary projectCard">
+        <ProjectCard className="bg-secondary">
             <h1>{props.name}</h1>
             <p>{props.description}</p>
             <ol>
@@ -20,7 +30,7 @@ const projectCard = (props: projectCardProps) => {
                 )}
             </ol>
             <Link to={props.link}><button>vist</button></Link>
-        </div>
+        </ProjectCard>
     );
 }
 

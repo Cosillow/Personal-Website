@@ -2,9 +2,10 @@ import { useState } from 'react'
 
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 
-import HomePage from './pages/HomePage/HomePage';
-import LibraryPage from './pages/LibraryPage/LibraryPage';
-import ProjectsController from './components/controllers/ProjectsController/ProjectsController';
+import HomePage from './pages/HomePage';
+import LibraryPage from './pages/LibraryPage';
+import ProjectsController from './components/controllers/ProjectsController';
+import ThemeController from './components/controllers/ThemeController';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -12,7 +13,7 @@ function App() {
   return (
     <BrowserRouter>
     {/* header */}
-
+    <ThemeController></ThemeController>
       <main>
         <Routes>
           <Route path='/' element={<HomePage></HomePage>}/>
