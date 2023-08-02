@@ -31,18 +31,63 @@ const Modal: React.FC<{
   open: number
 }> = ({ children, open }) => {
   const dialogRef = useRef<HTMLDialogElement | null>();
-
+  let topScroll: number = 0;
+  let leftScroll: number = 0;
 
   useEffect(() => {
-    if (!dialogRef || !open) return;
+    if (!dialogRef || !open) {
+      // modal closing
+      enableScroll();
+      return;
+    }
+
+    // Save the current scroll position
+    topScroll = window.scrollY || document.documentElement.scrollTop;
+    leftScroll = window.scrollX || document.documentElement.scrollLeft;
+
     dialogRef.current?.showModal()
+    disableScroll();
+
+    return () => {
+      enableScroll();
+    };
   }), [open];
+
+  const disableScroll = () => {
+    // Add scroll event listener and prevent scrolling
+    window.onscroll = function () {
+      window.scrollTo(leftScroll, topScroll);
+    };
+  };
+
+  const enableScroll = () => {
+    // Remove scroll event listener to enable scrolling
+    window.onscroll = null;
+  };
+
+  const closeModal = () => {
+    dialogRef.current?.close();
+    enableScroll();
+  }
+
+  const modalClicked = (event: any) => {
+    // if the user has clicked the backdrop, close the modal
+
+    let rect = event.target.getBoundingClientRect();
+    if (rect.left > event.clientX ||
+      rect.right < event.clientX ||
+      rect.top > event.clientY ||
+      rect.bottom < event.clientY
+    ) {
+      closeModal();
+    }
+  }
 
   return (
     <>
       {createPortal(
-        <DialogModal ref={dialogRef} onCancel={() => dialogRef.current?.close()}  >
-          <button className="clear" onClick={() => dialogRef.current?.close()} >
+        <DialogModal ref={dialogRef} onCancel={ closeModal } onClick={ modalClicked } >
+          <button className="clear" onClick={ closeModal } >
             <BiX></BiX>
           </button>
           <h3>THIS is it</h3>

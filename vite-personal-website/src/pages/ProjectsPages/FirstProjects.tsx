@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-type projectCardProps = {
+type ProjectCardProps = {
     "name": string,
     "tags": string[],
     "description": string,
@@ -19,14 +19,14 @@ const ProjectCard = styled.article`
 `
 
 
-const projectCard = (props: projectCardProps) => {
+const projectCard: React.FC<ProjectCardProps> = (props: ProjectCardProps) => {
     return (
         <ProjectCard className="bg-secondary">
             <h1>{props.name}</h1>
             <p>{props.description}</p>
             <ol>
-                {props.tags.map((tag: string) =>
-                    <li>{tag}</li>
+                {props.tags.map((tag: string, index: number) =>
+                    <li key={index}>{tag}</li>
                 )}
             </ol>
             <Link to={props.link}><button>vist</button></Link>
@@ -43,11 +43,13 @@ const FirstProjects = (props: FirstProjectsProps) => {
         <>
             <h1 className="text-center">My Projects</h1>
             <div className="container">
-                {
-                    props.projects.map((project: any) => {
-                        return projectCard(project);
-                    })
-                }
+                <ul>
+                    {
+                        props.projects.map((project: ProjectCardProps) => {
+                            return <li key={project.name}>{ projectCard(project) }</li>;
+                        })
+                    }
+                </ul>
             </div>
         </>
     );
