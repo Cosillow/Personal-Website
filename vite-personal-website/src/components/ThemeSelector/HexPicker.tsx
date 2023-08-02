@@ -1,38 +1,32 @@
-import { useEffect, useState } from "react";
+import { MutableRefObject, useEffect, useRef } from "react";
 import { Color } from "../../util/color";
 import { Picker } from "./styles";
 
 const HexPicker = ({currentColor, returnSelectedColor}: Picker) => {
-    const [userEnteredColor, setUserEnteredColor] = useState<string>(currentColor.hex);
+    const ref: MutableRefObject<HTMLInputElement | null> = useRef(null);
 
     useEffect(() => {
-        setUserEnteredColor(currentColor.hex);
+        ref.current!.value = currentColor.hex;
     }, [currentColor]);
-    
 
     const userEnteredHex = (event: any) => {
         event.preventDefault();
-        if (Color.isColor(userEnteredColor)) {
-            console.log("is color",new Color(userEnteredColor));
-            returnSelectedColor(new Color(userEnteredColor));
+        if (Color.isColor(ref.current!.value)) {
+            returnSelectedColor(new Color(ref.current!.value));
         } else {
-            console.log("current color:", currentColor);
-            setUserEnteredColor(currentColor.hex);
+            ref.current!.value = currentColor.hex;
         }
-        
       };
-
-    
     
     return ( 
         <>
             <form action="submit" onSubmit={userEnteredHex}>
-            <input type="text" onChange={(e)=>setUserEnteredColor(e.target.value)} value={userEnteredColor} name="HexPicer" id="HexPicker" />
+            <input type="text" ref={ref} name="HexPicer" id="HexPicker" />
             <button className="outline" type="submit">submit</button>
             </form>
             
         </>
-     );
+    );
 }
  
 export default HexPicker;

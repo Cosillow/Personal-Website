@@ -1,6 +1,6 @@
 @each $key, $val in $colors {
   .text-#{$key} {
-    color: var("--color-#{$key}");
+    color: var(--color-#{$key});
   }
   .bg-#{$key} {
     background: var(--color-#{$key});

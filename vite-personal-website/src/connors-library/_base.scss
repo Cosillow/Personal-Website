@@ -23,11 +23,11 @@ ul {
 }
 
 a {
-  text-decoration: none;
   color: var(--color-accent);
 }
 
 button {
+  text-align: center;
   font-size: 1rem;
   font-weight: 900;
   padding: 1em 2em;
@@ -42,6 +42,14 @@ button.outline {
   border: .16em solid var(--color-accent);
   background: transparent;
   color: var(--color-accent);
+}
+
+button.clear {
+  background: transparent;
+  color: var(--color-accent);
+  padding: 0;
+  border: none;
+
 }
 
 hr {

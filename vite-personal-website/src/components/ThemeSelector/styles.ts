@@ -188,5 +188,5 @@ export const LeftCenterRightSlider = styled(LeftRightSlider)<{
 
 export type Picker = { 
     currentColor: Color; 
-    returnSelectedColor: Function 
+    returnSelectedColor: (color:Color) => void
 };

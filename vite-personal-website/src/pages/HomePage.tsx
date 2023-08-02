@@ -2,8 +2,7 @@ import { DiReact } from "react-icons/di";
 import { HiPaintBrush } from "react-icons/hi2";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import ColorPicker from "../components/ThemeSelector/HSLPicker";
-import { Color } from "../util/color";
+import { useThemeController } from "../hooks/useThemeController";
 
 const marginBottom: string = '8em'
 
@@ -41,10 +40,11 @@ const Subheading = styled.p`
   margin-bottom: 2em;
 `
 
-
 const HomePage = () => {
+  const [theme, updateTheme] = useThemeController();
   return (
     <>
+    
     <HeroSection className="bg-primary">
     <div className="row">
           <InfoHeader className="col-6">
@@ -56,25 +56,27 @@ const HomePage = () => {
                   See Projects
                 </button>
               </Link>
+              <button onClick={() => updateTheme({background: "blue"})}>tttt</button>
             </div>
           </InfoHeader>
-          <BackgroundImage className="col-6" url='url("/cropped.jpg")' ></BackgroundImage>
+          <BackgroundImage className="col-6" url='url("/cropped-connor-photo.png")' ></BackgroundImage>
         </div>
     </HeroSection>
+    
     <AntsySection className="text-center">
     <h2>How Did I Do It?</h2>
         <div className="row font-md">
           <article className="col-12-xs col-4">
             <HiPaintBrush></HiPaintBrush>
-            <h3>Structured Styling</h3>
+            <h3>Styling Focused</h3>
           </article>
           <article className="col-12-xs col-4 ">
             <DiReact></DiReact>
-            <h3>Strong Framework</h3>
+            <h3>New Technologies</h3>
           </article>
           <article className="col-12-xs col-4">
-            
-            <h3></h3>
+          <DiReact></DiReact>
+            <h3>last thing</h3>
           </article>
         </div>
     </AntsySection>

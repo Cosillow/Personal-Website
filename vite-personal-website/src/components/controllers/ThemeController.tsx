@@ -1,8 +1,12 @@
+import { IoCopyOutline } from "react-icons/io5";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Color } from "../../util/color";
 import ColorPicker from "../ThemeSelector/HSLPicker";
 import HexPicker from "../ThemeSelector/HexPicker";
+import { useDispatch, useSelector } from "react-redux";
+import { THEME_VARIABLES, ColorScheme, setColor, setColorScheme } from "../../redux/slices/themeSlice";
+import { HEADER_STYLE } from "../Header";
 
 const DisplayColorDiv = styled.div<{
     background: string;
@@ -11,61 +15,95 @@ const DisplayColorDiv = styled.div<{
     height: 50px;
     background: rgb(${props => props.background});
 `
-type Theme = {
-    primary: Color;
-    secondary: Color;
-    accent: Color;
-}
+/*
+    useColorControls
 
-const ThemeController = () => {
-    const [color, setColor] = useState<Color>(new Color("#000000"));
-    const [selectedColor, setSelectedColor] = useState<string>('primary');
-    const [activeTheme, setActiveTheme] = useState<Theme>({}as Theme);
+    - setTheme
+    - setColor
+    - 
 
-    const themeVariables: string[] = ["primary", "secondary", "accent"];
+    theme state redux
+    - keep track of 
+        - user selected colorScheme
+        - my page layout
+            - my (default) colorScheme
+
+        !?- some way to distinguish if the page the user is on is able to have a theme change/color change
+        ?- Page theme
+ 
+ */
+
+const ThemeController: React.FC<{setHeaderStyle: (style: HEADER_STYLE) => void}> = ({ setHeaderStyle }) => {
+
+    const [selectedProperty, setSelectedProperty] = useState<string>('primary');
+    const stateTheme: ColorScheme = useSelector((state: any) => state.theme);
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        const theme = getRootTheme();
-        setActiveTheme(theme);
-        setColor(theme.primary);
+        // const root = getRootColorScheme()
+        // console.log(root)
+        // dispatch(setColorScheme(root));
     }, []);
 
-    const userSelectedVariable = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        // user plans to change the color of an variable
-        setSelectedColor(e.target.value);
-        setColor(activeTheme[e.target.value as keyof Theme]);
-    };
-
     const userPickedColor = (color: Color) => {
-        // user is changing the current active theme based on the selectedColor
-        setColor(color)
-        setActiveTheme({...activeTheme, [selectedColor]: color });
-        document.body.style.setProperty(`--color-${selectedColor}`, `rgb(${color.toList()})`);
+        // user is changing the current active theme based on the selectedProperty
+        dispatch(setColor({ colorType: selectedProperty, color: color }));
     }
 
-    const getRootTheme = (): Theme => {
-       return themeVariables.reduce((acc:any, color:string) => {
+    const getRootColorScheme = (): ColorScheme => {
+        return THEME_VARIABLES.reduce((acc: any, color: string) => {
             acc[color] = new Color(getComputedStyle(document.body).getPropertyValue(`--color-${color}`));
             return acc;
         }, {});
     };
 
-    return ( 
-        <>
-            <label htmlFor="colors">Choose a variable</label>
-            <select onChange={userSelectedVariable} value={selectedColor} name="colors" id="colors">
-                {
-                themeVariables.map((color:string) => (
-                    <option key={color} value={color}>{color}</option>
-                ))
-                }    
-            </select>
+    const userSelectedProperty = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        // user plans to change the color of an variable
+        setSelectedProperty(e.target.value);
+    };
 
-            <DisplayColorDiv background={color.toList()}></DisplayColorDiv>
-            <ColorPicker currentColor={color} returnSelectedColor={userPickedColor}></ColorPicker>
-            <HexPicker currentColor={color} returnSelectedColor={userPickedColor}></HexPicker>
+    const copyStyling = async (): Promise<boolean> => {
+        // turn theme into string
+        let text: string = ":root {\n";
+        for (const [key, value] of Object.entries(stateTheme)) {
+            text += `\t--color-${key}: rgb(${value.toList()});\n`;
+        }
+        text += `}\n`;
+
+        // copy string to clipboard
+        if (!navigator.clipboard) {
+            console.log(text);
+            return false;
+        } else {
+            try {
+                await navigator.clipboard.writeText(text);
+                return true;
+            } catch {
+                console.log(text);
+                return false;
+            }
+        }
+    }
+
+    return (
+        <>
+            <label htmlFor="proprtySelection">Choose a variable</label>
+            <select onChange={userSelectedProperty} value={selectedProperty} name="proprtySelection">
+                {
+                    THEME_VARIABLES.map((color: string) => (
+                        <option key={color} value={color}>{color}</option>
+                    ))
+                }
+            </select>
+            <button onClick={copyStyling} className="clear">
+                <IoCopyOutline></IoCopyOutline>
+            </button>
+
+            <DisplayColorDiv background={stateTheme[selectedProperty as keyof ColorScheme].toList()}></DisplayColorDiv>
+            <ColorPicker currentColor={stateTheme[selectedProperty as keyof ColorScheme]} returnSelectedColor={userPickedColor}></ColorPicker>
+            <HexPicker currentColor={stateTheme[selectedProperty as keyof ColorScheme]} returnSelectedColor={userPickedColor}></HexPicker>
         </>
     );
 }
- 
+
 export default ThemeController; 
