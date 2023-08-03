@@ -5,7 +5,7 @@ import { Color } from "../../util/color";
 import ColorPicker from "../ThemeSelector/HSLPicker";
 import HexPicker from "../ThemeSelector/HexPicker";
 import { useDispatch, useSelector } from "react-redux";
-import { THEME_VARIABLES, ColorScheme, setColor, setColorScheme } from "../../redux/slices/themeSlice";
+import { THEME_VARIABLES, ColorScheme, setColor, setColorScheme, useTheme, setThemeColor } from "../../redux/slices/themeSlice";
 import { HEADER_STYLE } from "../Header";
 
 const DisplayColorDiv = styled.div<{
@@ -36,7 +36,7 @@ const DisplayColorDiv = styled.div<{
 const ThemeController: React.FC<{setHeaderStyle: (style: HEADER_STYLE) => void}> = ({ setHeaderStyle }) => {
 
     const [selectedProperty, setSelectedProperty] = useState<string>('primary');
-    const stateTheme: ColorScheme = useSelector((state: any) => state.theme);
+    const stateTheme: ColorScheme = useTheme();
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -47,7 +47,7 @@ const ThemeController: React.FC<{setHeaderStyle: (style: HEADER_STYLE) => void}>
 
     const userPickedColor = (color: Color) => {
         // user is changing the current active theme based on the selectedProperty
-        dispatch(setColor({ colorType: selectedProperty, color: color }));
+        setThemeColor(dispatch, selectedProperty, color);
     }
 
     const getRootColorScheme = (): ColorScheme => {

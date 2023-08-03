@@ -19,7 +19,10 @@ export const useThemeController = (): [
   const updateTheme = useCallback((newTheme: Partial<ThemeState>) => {
     // change theme to whatever extent is necessary
     // everything else is default
-    setTheme({ ...DEFAULT_THEME, ...newTheme });
+    setTheme((theme: ThemeState) => {
+      console.log(theme);
+      return { ...theme, ...newTheme };
+    });
   }, []);
 
   return [
@@ -27,4 +30,3 @@ export const useThemeController = (): [
     updateTheme,
   ];
 };
-// const [theme, updateTheme] = useThemeController();

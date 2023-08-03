@@ -56,7 +56,7 @@ const HomePage = () => {
                   See Projects
                 </button>
               </Link>
-              <button onClick={() => updateTheme({background: "blue"})}>tttt</button>
+              <button onClick={() => updateTheme({background: "red"})}>tttt</button>
             </div>
           </InfoHeader>
           <BackgroundImage className="col-6" url='url("/cropped-connor-photo.png")' ></BackgroundImage>
