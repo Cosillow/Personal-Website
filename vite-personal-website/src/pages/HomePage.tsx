@@ -2,7 +2,6 @@ import { DiReact } from "react-icons/di";
 import { HiPaintBrush } from "react-icons/hi2";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { useThemeController } from "../hooks/useThemeController";
 
 const marginBottom: string = '8em'
 
@@ -41,7 +40,6 @@ const Subheading = styled.p`
 `
 
 const HomePage = () => {
-  const [theme, updateTheme] = useThemeController();
   return (
     <>
     
@@ -56,7 +54,6 @@ const HomePage = () => {
                   See Projects
                 </button>
               </Link>
-              <button onClick={() => updateTheme({background: "red"})}>tttt</button>
             </div>
           </InfoHeader>
           <BackgroundImage className="col-6" url='url("/cropped-connor-photo.png")' ></BackgroundImage>

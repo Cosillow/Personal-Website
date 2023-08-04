@@ -6,7 +6,6 @@ import ColorPicker from "../ThemeSelector/HSLPicker";
 import HexPicker from "../ThemeSelector/HexPicker";
 import { useDispatch, useSelector } from "react-redux";
 import { THEME_VARIABLES, ColorScheme, setColor, setColorScheme, useTheme, setThemeColor } from "../../redux/slices/themeSlice";
-import { HEADER_STYLE } from "../Header";
 
 const DisplayColorDiv = styled.div<{
     background: string;
@@ -33,7 +32,7 @@ const DisplayColorDiv = styled.div<{
  
  */
 
-const ThemeController: React.FC<{setHeaderStyle: (style: HEADER_STYLE) => void}> = ({ setHeaderStyle }) => {
+const ThemeController = () => {
 
     const [selectedProperty, setSelectedProperty] = useState<string>('primary');
     const stateTheme: ColorScheme = useTheme();
