@@ -5,7 +5,7 @@ import { Color } from "../../util/color";
 import ColorPicker from "../ThemeSelector/HSLPicker";
 import HexPicker from "../ThemeSelector/HexPicker";
 import { useDispatch, useSelector } from "react-redux";
-import { THEME_VARIABLES, ColorScheme, setColor, setColorScheme, useTheme, setThemeColor } from "../../redux/slices/themeSlice";
+import { THEME_VARIABLES, ColorScheme, setColor, setColorScheme, useTheme, setThemeColor, setThemeColors } from "../../redux/slices/themeSlice";
 
 const DisplayColorDiv = styled.div<{
     background: string;
@@ -38,11 +38,9 @@ const ThemeController = () => {
     const stateTheme: ColorScheme = useTheme();
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        // const root = getRootColorScheme()
-        // console.log(root)
-        // dispatch(setColorScheme(root));
-    }, []);
+    useEffect(()=>{
+        setThemeColors(dispatch, getRootColorScheme());
+    },[])
 
     const userPickedColor = (color: Color) => {
         // user is changing the current active theme based on the selectedProperty
@@ -58,6 +56,7 @@ const ThemeController = () => {
 
     const userSelectedProperty = (e: React.ChangeEvent<HTMLSelectElement>) => {
         // user plans to change the color of an variable
+        e.preventDefault();
         setSelectedProperty(e.target.value);
     };
 

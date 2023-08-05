@@ -6,6 +6,7 @@ import {
   Picker,
   Slider,
 } from "./styles";
+import { useEffect } from "react";
 
 const SliderStack = styled.div`
   display: flex;
@@ -37,7 +38,8 @@ const HSLPicker = ({ currentColor, returnSelectedColor }: Picker) => {
     const h: number = type === "h" ? val : currentColor.hsl.h;
     const s: number = type === "s" ? val : currentColor.hsl.s;
     const l: number = type === "l" ? val : currentColor.hsl.l;
-    returnSelectedColor(new Color(`hsl(${h}, ${s}%, ${l}%)`));
+    const newColor = new Color(`hsl(${h}, ${s}%, ${l}%)`);
+    returnSelectedColor(newColor);
   };
 
   return (

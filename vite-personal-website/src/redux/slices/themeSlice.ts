@@ -45,7 +45,7 @@ export const setThemeColors = (dispatch: Dispatch, colorScheme: ColorScheme) => 
 
 const dataToColorScheme = (data: ThemeData): ColorScheme => {
     return Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key as keyof ColorScheme] = new Color(value);
+        acc[key as keyof ColorScheme] = new Color(`rgb(${value})`);
         return acc;
     }, {} as ColorScheme);
 };
@@ -70,7 +70,6 @@ export const themeSlice = createSlice({
     initialState,
     reducers: {
         setColor: (state: any, action: { payload: { colorType: string, color: string }, type: string }) => {
-            // console.log('BEFORE', JSON.stringify(state), 'AFTER', action.payload.color.toList(), "COLORTYPE", action.payload.colorType, "COLOR", action.payload.color)
             document.body.style.setProperty(`--color-${action.payload.colorType}`, `rgb(${action.payload.color})`);
             state[action.payload.colorType] = action.payload.color;
         },
@@ -79,7 +78,6 @@ export const themeSlice = createSlice({
             type: string;
         }) => {
             THEME_VARIABLES.forEach((variable) => {
-                // console.log('BEFORE', JSON.stringify(state), 'AFTER', action.payload[variable as keyof ColorScheme].toList())
                 document.body.style.setProperty(`--color-${variable}`, `rgb(${action.payload[variable as keyof ColorScheme]})`);
                 state[variable] = action.payload[variable as keyof ColorScheme];
             })

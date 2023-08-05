@@ -12,16 +12,17 @@ const NAV_LINKS: ({ href: string, label: string })[] = [
     { href: '/home', label: 'home' },
 ];
 
-const HEADER_HEIGHT: number = 200;
+const HEADER_HEIGHT: number = 100;
 
 const HeaderOffset = styled.div`
+    background: var(--color-primary);
     display: block;
     height: ${HEADER_HEIGHT}px;
 `
 
 
 const CollapsibleHeader = styled.header`
-    background: var(--color-primary);
+    background: var(--color-secondary);
     position: fixed;
     top: 0;
     left: 0;
@@ -63,46 +64,40 @@ const Header = ({ children }:
     {
         children?: JSX.Element
     }) => {
-    const headerRef: MutableRefObject<HTMLElement | null> = useRef(null);
-    const [open, openModal] = useModal();
-    const [prevScrollPos, setPrevScrollPos] = useState(0);
-    const [scrollingUp, setScrollingUp] = useState(false);
-    const [showHeader, setShowHeader] = useState(false);
-
-    const handleScroll = () => {
-        const currentScrollPos = window.scrollY;
-        const scrolledUp = currentScrollPos < prevScrollPos;
-
-        if (scrolledUp) {
-            setScrollingUp(true);
-        } else {
-            setScrollingUp(false);
-        }
-
-        setPrevScrollPos(currentScrollPos);
-    };
-
-    useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
+        const headerRef: MutableRefObject<HTMLElement | null> = useRef(null);
+        const [open, openModal] = useModal();
+        // use ref instead of state, so that the component does not reload
+        const prevScrollPosRef: MutableRefObject<number> = useRef(0);
+        const scrollingUpRef: MutableRefObject<boolean> = useRef(false);
+        const collapsedRef: MutableRefObject<boolean> = useRef(false);
+    
+        const handleScroll = () => {
+            const currentScrollPos = window.scrollY;
+            scrollingUpRef.current = currentScrollPos < prevScrollPosRef.current;
+            prevScrollPosRef.current = currentScrollPos;
+    
+            if (currentScrollPos <= HEADER_HEIGHT/2 || scrollingUpRef.current) {
+                collapsedRef.current = false;
+            } else {
+                collapsedRef.current = true;
+            }
+    
+            if (headerRef.current) {
+                headerRef.current.classList.toggle('collapsed', collapsedRef.current);
+            }
         };
-    }, [prevScrollPos]);
-
-    useEffect(() => {
-        if (window.scrollY <= HEADER_HEIGHT || (scrollingUp && prevScrollPos > 50)) {
-            setShowHeader(true);
-            headerRef.current?.classList.remove('collapsed');
-        } else {
-            setShowHeader(false);
-            headerRef.current?.classList.add('collapsed');
-        }
-    }, [scrollingUp, prevScrollPos]);
+    
+        useEffect(() => {
+            window.addEventListener('scroll', handleScroll);
+            return () => {
+                window.removeEventListener('scroll', handleScroll);
+            };
+        }, []);
 
     return (
         <>
             <CollapsibleHeader ref={headerRef}>
-                {showHeader && (<><nav>
+                <nav>
                     <ul>
                         {NAV_LINKS.map((link) =>
                             <li key={link.label}>
@@ -112,12 +107,12 @@ const Header = ({ children }:
                         {children !== undefined && <ButtonLi>{children}</ButtonLi>}
                     </ul>
                 </nav>
-                    <button onClick={openModal} className="clear">
-                        <TbPaintFilled></TbPaintFilled><IoIosSwap></IoIosSwap>
-                    </button>
-                    <Modal open={open}>
-                        <ThemeController ></ThemeController>
-                    </Modal> </>)}
+                <button onClick={openModal} className="clear">
+                    <TbPaintFilled></TbPaintFilled><IoIosSwap></IoIosSwap>
+                </button>
+                <Modal open={open}>
+                    <ThemeController ></ThemeController>
+                </Modal>
             </CollapsibleHeader>
             <HeaderOffset></HeaderOffset>
         </>
