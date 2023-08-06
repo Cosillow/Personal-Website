@@ -8,11 +8,11 @@ import ThemeController from "./controllers/ThemeController";
 import useModal from "../hooks/useModal";
 
 const NAV_LINKS: ({ href: string, label: string })[] = [
-    { href: '/projects', label: 'projects' },
     { href: '/home', label: 'home' },
+    { href: '/projects', label: 'projects' },
 ];
 
-const HEADER_HEIGHT: number = 100;
+export const HEADER_HEIGHT: number = 100;
 
 const HeaderOffset = styled.div`
     background: var(--color-primary);
@@ -110,7 +110,7 @@ const Header = ({ children }:
                 <button onClick={openModal} className="clear">
                     <TbPaintFilled></TbPaintFilled><IoIosSwap></IoIosSwap>
                 </button>
-                <Modal open={open}>
+                <Modal title="Theme Controller" open={open}>
                     <ThemeController ></ThemeController>
                 </Modal>
             </CollapsibleHeader>

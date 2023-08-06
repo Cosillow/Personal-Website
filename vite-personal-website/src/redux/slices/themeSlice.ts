@@ -1,4 +1,5 @@
-import { AnyAction, Dispatch, createSlice } from '@reduxjs/toolkit'
+import { HSL } from './../../util/color';
+import { Dispatch, createSlice } from '@reduxjs/toolkit'
 import { Color } from '../../util/color';
 import { useSelector } from 'react-redux';
 
@@ -35,7 +36,7 @@ export const useTheme = (): ColorScheme => {
 
 export const setThemeColor = (dispatch: Dispatch, colorType: string, color: Color) => {
     // allow the user to use a reducer with the custom `Color` class
-    dispatch(setColor({ colorType, color: color.toList() }));
+    dispatch(setColor({ colorType, color: color.toHSL() }));
 };
 
 export const setThemeColors = (dispatch: Dispatch, colorScheme: ColorScheme) => {
@@ -43,17 +44,18 @@ export const setThemeColors = (dispatch: Dispatch, colorScheme: ColorScheme) => 
     dispatch(setColorScheme(colorSchemeToData(colorScheme)));
 };
 
+
+// save/get data from redux
 const dataToColorScheme = (data: ThemeData): ColorScheme => {
     return Object.entries(data).reduce((acc, [key, value]) => {
-        acc[key as keyof ColorScheme] = new Color(`rgb(${value})`);
+        console.log(value)
+        acc[key as keyof ColorScheme] = new Color(value);
         return acc;
     }, {} as ColorScheme);
 };
-
-
 const colorSchemeToData = (scheme: ColorScheme): ThemeData => {
     return Object.entries(scheme).reduce((data, [key, value]) => {
-        data[key as keyof ThemeData] = value.toList();
+        data[key as keyof ThemeData] = value.toHSL();
         return data;
     }, {} as ThemeData);
 };
@@ -70,7 +72,7 @@ export const themeSlice = createSlice({
     initialState,
     reducers: {
         setColor: (state: any, action: { payload: { colorType: string, color: string }, type: string }) => {
-            document.body.style.setProperty(`--color-${action.payload.colorType}`, `rgb(${action.payload.color})`);
+            document.body.style.setProperty(`--color-${action.payload.colorType}`, action.payload.color);
             state[action.payload.colorType] = action.payload.color;
         },
         setColorScheme: (state: any, action: {
@@ -78,7 +80,7 @@ export const themeSlice = createSlice({
             type: string;
         }) => {
             THEME_VARIABLES.forEach((variable) => {
-                document.body.style.setProperty(`--color-${variable}`, `rgb(${action.payload[variable as keyof ColorScheme]})`);
+                document.body.style.setProperty(`--color-${variable}`, action.payload[variable as keyof ColorScheme]);
                 state[variable] = action.payload[variable as keyof ColorScheme];
             })
         },

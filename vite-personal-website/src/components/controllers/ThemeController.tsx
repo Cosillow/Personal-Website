@@ -40,7 +40,7 @@ const ThemeController = () => {
 
     useEffect(()=>{
         setThemeColors(dispatch, getRootColorScheme());
-    },[])
+    },[]);
 
     const userPickedColor = (color: Color) => {
         // user is changing the current active theme based on the selectedProperty
@@ -85,8 +85,7 @@ const ThemeController = () => {
 
     return (
         <>
-            <label htmlFor="proprtySelection">Choose a variable</label>
-            <select onChange={userSelectedProperty} value={selectedProperty} name="proprtySelection">
+            <select className="m-v-md" onChange={userSelectedProperty} value={selectedProperty} name="proprtySelection">
                 {
                     THEME_VARIABLES.map((color: string) => (
                         <option key={color} value={color}>{color}</option>
@@ -97,9 +96,9 @@ const ThemeController = () => {
                 <IoCopyOutline></IoCopyOutline>
             </button>
 
-            <DisplayColorDiv background={stateTheme[selectedProperty as keyof ColorScheme].toList()}></DisplayColorDiv>
+            {/* <DisplayColorDiv background={stateTheme[selectedProperty as keyof ColorScheme].toList()}></DisplayColorDiv> */}
             <ColorPicker currentColor={stateTheme[selectedProperty as keyof ColorScheme]} returnSelectedColor={userPickedColor}></ColorPicker>
-            <HexPicker currentColor={stateTheme[selectedProperty as keyof ColorScheme]} returnSelectedColor={userPickedColor}></HexPicker>
+            {/* <HexPicker currentColor={stateTheme[selectedProperty as keyof ColorScheme]} returnSelectedColor={userPickedColor}></HexPicker> */}
         </>
     );
 }

@@ -196,5 +196,10 @@ export interface RGB {
       const { r, g, b }: RGB = this.rgb;
       return `${r},${g},${b}`;
     }
+
+    toHSL(): string {
+      const { h , s , l }: HSL = this.hsl;
+      return `hsl(${h}, ${s}%, ${l}%)`;
+    }
   }
   

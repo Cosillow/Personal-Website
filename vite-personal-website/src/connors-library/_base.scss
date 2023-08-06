@@ -15,6 +15,12 @@ html {
   font-family: Poppins;
   margin: 0;
   padding: 0;
+  background: var(--color-primary);
+}
+
+ul.styled {
+  list-style-type: disc;   
+  padding: 0 0 0 4em;
 }
 
 ul {

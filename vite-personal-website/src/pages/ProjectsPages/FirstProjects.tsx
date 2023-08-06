@@ -20,13 +20,14 @@ const ProjectCard = styled.article`
 const projectCard: React.FC<ProjectCardProps> = (props: ProjectCardProps) => {
     return (
         <ProjectCard key={props.name} className="bg-secondary">
-            <h1>{props.name}</h1>
+            <h2 className="font-sm">{props.name}</h2>
             <p>{props.description}</p>
-            <ol>
+            <h3 className="font-xs m-v-sm">Skills</h3>
+            <ul className="styled m-b-lg">
                 {props.tags.map((tag: string, index: number) =>
                     <li key={index}>{tag}</li>
                 )}
-            </ol>
+            </ul>
             <Link to={props.link}><button>vist</button></Link>
         </ProjectCard>
     );
