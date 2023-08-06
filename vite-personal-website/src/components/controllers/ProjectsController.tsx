@@ -2,12 +2,12 @@ import FirstProjects from "../../pages/ProjectsPages/FirstProjects";
 
 const projects: any[] = [
     {
-        "name": "Personal Website",
-        "tags": ["HTML", "CSS", "JS"],
-        "description": "This was the first personal project I took on. After taking intro to web design in my first semester at RPI, I became intrigued by what I could do with the web. With a lot more research (specifically css) on my own, I came up with this first draft!",
-        "link": "../index.html",
-        "thumbnail": "images/personal.PNG",
-        "image": "images/personal.PNG"
+        "name": "Music Player Monopoly",
+        "tags": ["HTML", "CSS", "JS", "Node", "Express"],
+        "description": "For this project, I worked collaboratively with a small team of five members throughout a semester, following approaches outlined by the agile framework Scrum. We integrated Spotify's public API into a web application that allows users to see statistics based on their music listening. In this class we also wrote a lot of software documentation, which I found beneficial to creating a cohesive end product.",
+        "link": "http://www.musicplayermonopoly.com/index.html",
+        "thumbnail": "images/MPM.png",
+        "image": "images/MPM.png"
     },
     {
         "name": "Contact-Me",
@@ -26,13 +26,13 @@ const projects: any[] = [
         "image": "images/NES-media.png"
     },
     {
-        "name": "Music Player Monopoly",
-        "tags": ["HTML", "CSS", "JS", "Node", "Express"],
-        "description": "For this project, I worked collaboratively with a small team of five members throughout a semester, following approaches outlined by the agile framework Scrum. We integrated Spotify's public API into a web application that allows users to see statistics based on their music listening. In this class we also wrote a lot of software documentation, which I found beneficial to creating a cohesive end product.",
-        "link": "http://www.musicplayermonopoly.com/index.html",
-        "thumbnail": "images/MPM.png",
-        "image": "images/MPM.png"
-    }
+        "name": "Personal Website",
+        "tags": ["HTML", "CSS", "JS"],
+        "description": "This was the first personal project I took on. After taking intro to web design in my first semester at RPI, I became intrigued by what I could do with the web. With a lot more research (specifically css) on my own, I came up with this first draft!",
+        "link": "https://connor-silloway.netlify.app/",
+        "thumbnail": "images/personal.PNG",
+        "image": "images/personal.PNG"
+    },
 ];
 
 const ProjectsController = () => {
