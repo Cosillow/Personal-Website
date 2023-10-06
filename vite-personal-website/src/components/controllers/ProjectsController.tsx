@@ -1,6 +1,32 @@
 import FirstProjects from "../../pages/ProjectsPages/FirstProjects";
 
 const projects: any[] = [
+    // TODO: add dates
+    // Knights Tour?
+    {
+        "name": "2D Physics Game",
+        "tags": ["C++", "SDL2"],
+        "description": "Around half of my coursework has been projects unrelated to web technologies. However, my projects did not show that. So, I decided that I will learn about object oriented programming and design patterns by making a game in C++. Doing this without an existing game engine has obvious challenges, but it has made me a better programmer. I successfully researched and created classes that handle: input, collisions, physics, sprites, animations.",
+        
+        "thumbnail": "",
+        "image": ""
+    },
+    {
+        "name": "React Portfolio",
+        "tags": ["React", "Scss", "React-redux"],
+        "description": "Up until this point, the only framework I have used for frontend development has been Angular. So, I decided to refactor my original static portfolio with React, to get a better understanding of another framework. I have bigger plans in the future, but I already feel like I have gained a good understanding of React.",
+        "link": "/home",
+        "thumbnail": "",
+        "image": ""
+    },
+    {
+        "name": "Troy Waterfront Farmers Market Musician System",
+        "tags": ["Angular", "Bootstrap"],
+        "description": "Collaborating with a five member team, we were tasked to find a client and deliver them an Information Technology solution for a problem they were facing. After speaking with many clients, we ended up creating a musician booking system for the Troy Waterfront Market. Previously, musicians emailed their availabilities and were scheduled manually. This aimed to reduce that time significantly. Working with a diverse team allowed us to specialize, with myself as the frontend developer.",
+        
+        "thumbnail": "",
+        "image": ""
+    },
     {
         "name": "Music Player Monopoly",
         "tags": ["HTML", "CSS", "JS", "Node", "Express"],
@@ -20,7 +46,7 @@ const projects: any[] = [
     {
         "name": "NES-media Photography",
         "tags": ["HTML", "CSS", "JS"],
-        "description": "After diving more into these web technologies, I was confident enough to work on a project for a client. This gave me experience in working towards someone else's goals, as well as communicating my needs and what can be done in the scope of a project.",
+        "description": "After diving more into these web technologies, I was confident enough to work on a project for a client. This gave me experience in working towards someone else's goals, as well as communicating my needs of what can be done in the scope of a project. This project has also allowed me to iteratively improve on something as the clients needs evolve.",
         "link": "https://nes-media.netlify.app/",
         "thumbnail": "images/NES-media.png",
         "image": "images/NES-media.png"

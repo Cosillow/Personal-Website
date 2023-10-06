@@ -72,7 +72,7 @@ export const themeSlice = createSlice({
     initialState,
     reducers: {
         setColor: (state: any, action: { payload: { colorType: string, color: string }, type: string }) => {
-            document.body.style.setProperty(`--color-${action.payload.colorType}`, action.payload.color);
+            document.documentElement.style.setProperty(`--color-${action.payload.colorType}`, action.payload.color);
             state[action.payload.colorType] = action.payload.color;
         },
         setColorScheme: (state: any, action: {
@@ -80,7 +80,7 @@ export const themeSlice = createSlice({
             type: string;
         }) => {
             THEME_VARIABLES.forEach((variable) => {
-                document.body.style.setProperty(`--color-${variable}`, action.payload[variable as keyof ColorScheme]);
+                document.documentElement.style.setProperty(`--color-${variable}`, action.payload[variable as keyof ColorScheme]);
                 state[variable] = action.payload[variable as keyof ColorScheme];
             })
         },

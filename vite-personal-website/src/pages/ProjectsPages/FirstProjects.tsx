@@ -23,12 +23,12 @@ const projectCard: React.FC<ProjectCardProps> = (props: ProjectCardProps) => {
             <h2 className="font-sm">{props.name}</h2>
             <p>{props.description}</p>
             <h3 className="font-xs m-v-sm">Skills</h3>
-            <ul className="styled m-b-lg">
+            <ul className="styled">
                 {props.tags.map((tag: string, index: number) =>
                     <li key={index}>{tag}</li>
                 )}
             </ul>
-            <Link to={props.link}><button>vist</button></Link>
+            {props.link && <Link  to={props.link}><button className="m-t-lg">vist</button></Link>}
         </ProjectCard>
     );
 }
@@ -40,7 +40,7 @@ type FirstProjectsProps = {
 const FirstProjects = (props: FirstProjectsProps) => {
     return (
         <>
-            <h1 className="text-center">My Projects</h1>
+            <h1 className="text-center m-v-sm">My Projects</h1>
             <div className="container">
                     {
                         props.projects.map((project: ProjectCardProps) => {

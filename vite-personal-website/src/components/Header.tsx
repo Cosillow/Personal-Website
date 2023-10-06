@@ -8,8 +8,8 @@ import ThemeController from "./controllers/ThemeController";
 import useModal from "../hooks/useModal";
 
 const NAV_LINKS: ({ href: string, label: string })[] = [
-    { href: '/home', label: 'home' },
-    { href: '/projects', label: 'projects' },
+    { href: '/home', label: 'HOME' },
+    { href: '/projects', label: 'PROJECTS' },
 ];
 
 export const HEADER_HEIGHT: number = 100;
@@ -107,7 +107,7 @@ const Header = ({ children }:
                         {children !== undefined && <ButtonLi>{children}</ButtonLi>}
                     </ul>
                 </nav>
-                <button onClick={openModal} className="clear">
+                <button onClick={openModal} className="clear m-r-md">
                     <TbPaintFilled></TbPaintFilled><IoIosSwap></IoIosSwap>
                 </button>
                 <Modal title="Theme Controller" open={open}>
