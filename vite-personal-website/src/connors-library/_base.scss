@@ -30,6 +30,10 @@ ul {
 
 a {
   color: var(--color-accent);
+  text-decoration: none;
+}
+a.styled {
+  text-decoration: underline;
 }
 
 button {
@@ -38,7 +42,10 @@ button {
   font-weight: 900;
   padding: 1em 2em;
   cursor: pointer;
-  border: 2px solid var(--color-accent-contrast);
+  
+  // border: 2px solid var(--color-accent-contrast);
+  border: none;
+
   background: var(--color-accent);
   color: var(--color-accent-contrast);
   border-radius: var(--border-md);

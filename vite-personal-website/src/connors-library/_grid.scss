@@ -16,6 +16,12 @@ $layout-values: flex-start, flex-end, center, space-between, space-around;
   flex-flow: row wrap;
   height: 100%;
 }
+.center-child {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
 
 // justify + align
 @each $val in $layout-values {

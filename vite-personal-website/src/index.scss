@@ -1,19 +1,19 @@
 :root {
-    --color-primary: rgb(255, 255, 255);
+    --color-primary: rgb(255,255,255);
     --color-primary-contrast: rgb(0, 0, 0);
 
-    --color-secondary: #c1d1fa;
+    --color-secondary: rgb(195,229,233);
     --color-secondary-contrast: rgb(0, 0, 0);
 
-    --color-accent: #ff7057;
-    --color-accent-contrast: rgb(0, 0, 0);
+    --color-accent: rgb(243,93,73);
+    --color-accent-contrast: rgb(255, 255, 255);
     
 
-    --font-xs: clamp(.5rem, 1rem + 5vw , 1rem);
-    --font-sm: clamp(1rem, 1rem + 5vw , 2rem);
-    --font-md: clamp(3rem, 1rem + 5vw , 4rem);
-    --font-lg: clamp(4rem, 1rem + 5vw , 5rem);
-    --font-xl: clamp(5rem, 1rem + 5vw , 6rem);
+    --font-xs: clamp(0.8rem, 1rem + 2vw, 1.2rem);
+    --font-sm: clamp(1rem, 1rem + 2vw, 1.4rem);
+    --font-md: clamp(1.2rem, 1rem + 2vw, 1.6rem);
+    --font-lg: clamp(1.4rem, 1rem + 2vw, 1.8rem);
+    --font-xl: clamp(2.6rem, 1rem + 2vw, 3rem);
 
     --margin-xs: .5em;
     --margin-sm: 1em;

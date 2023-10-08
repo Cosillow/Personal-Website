@@ -8,11 +8,11 @@ import ThemeController from "./controllers/ThemeController";
 import useModal from "../hooks/useModal";
 
 const NAV_LINKS: ({ href: string, label: string })[] = [
-    { href: '/home', label: 'HOME' },
-    { href: '/projects', label: 'PROJECTS' },
+    { href: '/home', label: 'Home' },
+    { href: '/projects', label: 'Projects' },
 ];
 
-export const HEADER_HEIGHT: number = 100;
+export const HEADER_HEIGHT: number = 75;
 
 const HeaderOffset = styled.div`
     background: var(--color-primary);
@@ -22,6 +22,7 @@ const HeaderOffset = styled.div`
 
 
 const CollapsibleHeader = styled.header`
+    z-index: 999;
     background: var(--color-secondary);
     position: fixed;
     top: 0;
@@ -31,6 +32,7 @@ const CollapsibleHeader = styled.header`
     display: flex;
     flex-direction: row;
     align-items: center;
+    
 
     nav {
         margin-left: auto;
@@ -100,14 +102,14 @@ const Header = ({ children }:
                 <nav>
                     <ul>
                         {NAV_LINKS.map((link) =>
-                            <li key={link.label}>
+                            <li className="font-sm" key={link.label}>
                                 <Link to={link.href}>{link.label}</Link>
                             </li>
                         )}
                         {children !== undefined && <ButtonLi>{children}</ButtonLi>}
                     </ul>
                 </nav>
-                <button onClick={openModal} className="clear m-r-md">
+                <button onClick={openModal} className="clear font-sm m-r-md">
                     <TbPaintFilled></TbPaintFilled><IoIosSwap></IoIosSwap>
                 </button>
                 <Modal title="Theme Controller" open={open}>

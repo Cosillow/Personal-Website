@@ -14,21 +14,23 @@ const ProjectCard = styled.article`
     padding: 3em;
     border-radius: 50px;
     margin-bottom: 4em;
+    position: relative;
 `
+
 
 
 const projectCard: React.FC<ProjectCardProps> = (props: ProjectCardProps) => {
     return (
         <ProjectCard key={props.name} className="bg-secondary">
-            <h2 className="font-sm">{props.name}</h2>
-            <p>{props.description}</p>
-            <h3 className="font-xs m-v-sm">Skills</h3>
-            <ul className="styled">
+            <h2 className="font-md">{props.name}</h2>
+            <p className="font-xs">{props.description}</p>
+            <h3 className="font-sm m-v-sm m-l-sm">Skills</h3>
+            <ul className="styled font-sm">
                 {props.tags.map((tag: string, index: number) =>
                     <li key={index}>{tag}</li>
                 )}
             </ul>
-            {props.link && <Link  to={props.link}><button className="m-t-lg">vist</button></Link>}
+            {props.link && <div className="row justify-flex-end"><Link to={props.link}><button className="m-t-lg m-r-xl">vist</button></Link></div>}
         </ProjectCard>
     );
 }
@@ -40,7 +42,7 @@ type FirstProjectsProps = {
 const FirstProjects = (props: FirstProjectsProps) => {
     return (
         <>
-            <h1 className="text-center m-v-sm">My Projects</h1>
+            <h1 className="text-center font-xl m-v-sm">My Projects</h1>
             <div className="container">
                     {
                         props.projects.map((project: ProjectCardProps) => {
