@@ -112,5 +112,35 @@ $layout-values: flex-start, flex-end, center, space-between, space-around;
     margin-left: var(--margin-#{$size});
     margin-right: var(--margin-#{$size});
   }
+
   
+  .p-#{$size} {
+    padding: var(--padding-#{$size});
+  }
+
+  .p-l-#{$size} {
+    padding-left: var(--padding-#{$size});
+  }
+
+  .p-t-#{$size} {
+    padding-top: var(--padding-#{$size});
+  }
+
+  .p-r-#{$size} {
+    padding-right: var(--padding-#{$size});
+  }
+
+  .p-b-#{$size} {
+    padding-bottom: var(--padding-#{$size});
+  }
+
+  .p-v-#{$size} {
+    padding-top: var(--padding-#{$size});
+    padding-bottom: var(--padding-#{$size});
+  }
+
+  .p-h-#{$size} {
+    padding-left: var(--padding-#{$size});
+    padding-right: var(--padding-#{$size});
+  }
 }

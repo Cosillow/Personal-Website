@@ -15,7 +15,7 @@ const NAV_LINKS: ({ href: string, label: string })[] = [
 export const HEADER_HEIGHT: number = 75;
 
 const HeaderOffset = styled.div`
-    background: var(--color-primary);
+    background: transparent;
     display: block;
     height: ${HEADER_HEIGHT}px;
 `

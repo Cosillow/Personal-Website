@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { HEADER_HEIGHT } from "../components/Header";
 
 const HeroSection = styled.section`
@@ -19,20 +19,37 @@ const InfoHeader = styled.header`
 interface BackgroundImageProps {
   url: string;
 }
+const fadeInOut = keyframes`
+  0%, 100% {
+    transform: translateY(0%);
+  }
+  50% {
+    transform: translateY(20%);
+  }
+`;
+
 const BackgroundImage = styled.div<BackgroundImageProps>`
+  position: relative;
   width: clamp(30%, 55%, 100%);
   height: clamp(30%, 75%, 100%);
-  background-image: ${props => props.url};
   background-size: cover;
   background-position: top center;
-`
+  background-image: ${props => props.url};
+  overflow: hidden;
 
-const Wave = styled.div`
-  --size: 50px;
-  background: blue;
-  mask: radial-gradient(var(--size) at 50% 0%, #0000 99%, red 101%) 
-    50% var(--size)/calc(4 * var(--size)) 100% repeat-x;
-`
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, var(--color-accent) -20%, rgba(255, 255, 255, 0.0) 30%);
+    /* opacity: 0; */
+    animation: ease-in-out ${fadeInOut} 3s infinite; /* Adjust duration as needed */
+  }
+`;
+
 
 const Subheading = styled.p`
   color: grey;
@@ -56,8 +73,9 @@ const HomePage = () => {
           </div>
         </InfoHeader>
         <div className="col-6 center-child">
-          <BackgroundImage url='url("/cropped-connor-photo.png")' ></BackgroundImage>
-          <Wave></Wave>
+          <BackgroundImage url='url("/cropped-connor-photo.png")' >
+            
+          </BackgroundImage>
         </div>
       </div>
     </HeroSection>
