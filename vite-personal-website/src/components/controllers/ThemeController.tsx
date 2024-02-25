@@ -3,9 +3,8 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Color } from "../../util/color";
 import ColorPicker from "../ThemeSelector/HSLPicker";
-import HexPicker from "../ThemeSelector/HexPicker";
-import { useDispatch, useSelector } from "react-redux";
-import { THEME_VARIABLES, ColorScheme, setColor, setColorScheme, useTheme, setThemeColor, setThemeColors } from "../../redux/slices/themeSlice";
+import { useDispatch } from "react-redux";
+import { THEME_VARIABLES, ColorScheme, useTheme, setThemeColor, setThemeColors } from "../../redux/slices/themeSlice";
 
 const DisplayColorDiv = styled.div<{
     background: string;
@@ -85,16 +84,18 @@ const ThemeController = () => {
 
     return (
         <>
-            <select className="m-v-md" onChange={userSelectedProperty} value={selectedProperty} name="proprtySelection">
-                {
-                    THEME_VARIABLES.map((color: string) => (
-                        <option key={color} value={color}>{color}</option>
-                    ))
-                }
-            </select>
-            <button onClick={copyStyling} className="clear">
-                <IoCopyOutline></IoCopyOutline>
-            </button>
+            <div className="row justify-space-between">
+                <select className="m-v-md" onChange={userSelectedProperty} value={selectedProperty} name="proprtySelection">
+                    {
+                        THEME_VARIABLES.map((color: string) => (
+                            <option key={color} value={color}>{color}</option>
+                        ))
+                    }
+                </select>
+                <button onClick={copyStyling} className="clear font-md">
+                    <IoCopyOutline></IoCopyOutline>
+                </button>
+            </div>
 
             {/* <DisplayColorDiv background={stateTheme[selectedProperty as keyof ColorScheme].toList()}></DisplayColorDiv> */}
             <ColorPicker currentColor={stateTheme[selectedProperty as keyof ColorScheme]} returnSelectedColor={userPickedColor}></ColorPicker>
