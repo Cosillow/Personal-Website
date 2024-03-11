@@ -19,14 +19,6 @@ const InfoHeader = styled.header`
 interface BackgroundImageProps {
   url: string;
 }
-const fadeInOut = keyframes`
-  0%, 100% {
-    transform: translateY(0%);
-  }
-  50% {
-    transform: translateY(20%);
-  }
-`;
 
 const BackgroundImage = styled.div<BackgroundImageProps>`
   position: relative;
@@ -35,19 +27,7 @@ const BackgroundImage = styled.div<BackgroundImageProps>`
   background-size: cover;
   background-position: top center;
   background-image: ${props => props.url};
-  overflow: hidden;
-
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to top, var(--color-accent) -20%, rgba(255, 255, 255, 0.0) 30%);
-    /* opacity: 0; */
-    animation: ease-in-out ${fadeInOut} 3s infinite; /* Adjust duration as needed */
-  }
+  border-bottom: 15px solid var(--color-accent);
 `;
 
 
