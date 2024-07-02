@@ -1,0 +1,146 @@
+@use "sass:math";
+
+$grid-columns: 12;
+$layout-values: flex-start, flex-end, center, space-between, space-around;
+
+// base layout classes
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-flow: row wrap;
+  height: 100%;
+}
+.center-child {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+// justify + align
+@each $val in $layout-values {
+  .justify-#{$val} {
+    justify-content: $val;
+  }
+
+  .align-#{$val} {
+    align-items: $val;
+  }
+}
+
+// col classes
+@include xs {
+  @for $i from 1 through $grid-columns {
+    .col-#{$i}-xs {
+      flex-grow: 0;
+      width: math.div($i * 100%, $grid-columns);
+    }
+  }
+}
+@include sm {
+  @for $i from 1 through $grid-columns {
+    .col-#{$i}-sm {
+      flex-grow: 0;
+      width: math.div($i * 100%, $grid-columns);
+    }
+  }
+}
+@include md {
+  @for $i from 1 through $grid-columns {
+    .col-#{$i}-md {
+      flex-grow: 0;
+      width: math.div($i * 100%, $grid-columns);
+    }
+  }
+}
+@include lg {
+  @for $i from 1 through $grid-columns {
+    .col-#{$i}-lg {
+      flex-grow: 0;
+      width: math.div($i * 100%, $grid-columns);
+    }
+  }
+}
+@include xl {
+  @for $i from 1 through $grid-columns {
+    .col-#{$i}-xl {
+      flex-grow: 0;
+      width: math.div($i * 100%, $grid-columns);
+    }
+  }
+}
+@for $i from 1 through $grid-columns {
+  .col-#{$i} {
+    flex-grow: 0;
+    width: math.div($i * 100%, $grid-columns);
+  }
+}
+
+@each $size in $sizes {
+  .m-#{$size} {
+    margin: var(--margin-#{$size});
+  }
+
+  .m-l-#{$size} {
+    margin-left: var(--margin-#{$size});
+  }
+
+  .m-t-#{$size} {
+    margin-top: var(--margin-#{$size});
+  }
+
+  .m-r-#{$size} {
+    margin-right: var(--margin-#{$size});
+  }
+
+  .m-b-#{$size} {
+    margin-bottom: var(--margin-#{$size});
+  }
+
+  .m-v-#{$size} {
+    margin-top: var(--margin-#{$size});
+    margin-bottom: var(--margin-#{$size});
+  }
+
+  .m-h-#{$size} {
+    margin-left: var(--margin-#{$size});
+    margin-right: var(--margin-#{$size});
+  }
+
+  
+  .p-#{$size} {
+    padding: var(--padding-#{$size});
+  }
+
+  .p-l-#{$size} {
+    padding-left: var(--padding-#{$size});
+  }
+
+  .p-t-#{$size} {
+    padding-top: var(--padding-#{$size});
+  }
+
+  .p-r-#{$size} {
+    padding-right: var(--padding-#{$size});
+  }
+
+  .p-b-#{$size} {
+    padding-bottom: var(--padding-#{$size});
+  }
+
+  .p-v-#{$size} {
+    padding-top: var(--padding-#{$size});
+    padding-bottom: var(--padding-#{$size});
+  }
+
+  .p-h-#{$size} {
+    padding-left: var(--padding-#{$size});
+    padding-right: var(--padding-#{$size});
+  }
+}

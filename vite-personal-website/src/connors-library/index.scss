@@ -1,0 +1,23 @@
+@import "./base.scss";
+@import "./breakpoints.scss";
+@import "./utility.scss";
+@import "./variables.scss";
+@import "./typography.scss";
+@import "./colors.scss";
+@import "./grid.scss";
+
+/*
+VITE:
+
+- insert this object in vit.config.ts 
+    - in the tsdefineConfig object:
+
+        css: {
+            preprocessorOptions: {
+            scss: {
+                additionalData: `
+                @import "./src/connors-library/index.scss";
+                `,
+            },
+        },
+*/

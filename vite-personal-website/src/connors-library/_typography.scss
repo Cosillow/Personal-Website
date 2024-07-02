@@ -1,0 +1,17 @@
+@for $i from 1 through length($sizes) {
+  $size: nth($sizes, $i);
+  .font-#{$size} {
+    font-size: var(--font-#{$size});
+  }
+
+  h#{$i} {
+    font-size: var(--font-#{$size});
+  }
+}
+h6 {
+  font-size: var(--font-xs);
+}
+
+.text-end {
+  text-align: end;
+}

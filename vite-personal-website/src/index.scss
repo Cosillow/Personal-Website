@@ -1,0 +1,33 @@
+:root {
+    --color-primary: rgb(255,255,255);
+    --color-primary-contrast: rgb(0, 0, 0);
+
+    --color-secondary: rgb(195,229,233);
+    --color-secondary-contrast: rgb(0, 0, 0);
+
+    --color-accent: rgb(243,93,73);
+    --color-accent-contrast: rgb(255, 255, 255);
+    
+
+    --font-xs: clamp(0.8rem, 1rem + 2vw, 1.2rem);
+    --font-sm: clamp(1rem, 1rem + 2vw, 1.4rem);
+    --font-md: clamp(1.2rem, 1rem + 2vw, 1.6rem);
+    --font-lg: clamp(1.4rem, 1rem + 2vw, 1.8rem);
+    --font-xl: clamp(2.6rem, 1rem + 2vw, 3rem);
+
+    --margin-xs: .5em;
+    --margin-sm: 1em;
+    --margin-md: 2em;
+    --margin-lg: 3em;
+    --margin-xl: 5em;
+
+    --padding-xs: .5em;
+    --padding-sm: 1em;
+    --padding-md: 2em;
+    --padding-lg: 3em;
+    --padding-xl: 5em;
+
+    --border-sm: .16em;
+    --border-md: .5em;
+    --border-lg: .8em;;
+}
