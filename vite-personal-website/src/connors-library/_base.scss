@@ -38,7 +38,7 @@ a.styled {
 }
 
 button, .btn {
-  display: inline-block;
+  width: fit-content;
   text-align: center;
   font-size: 1rem;
   font-weight: 900;
@@ -52,6 +52,11 @@ button, .btn {
   color: var(--color-accent-contrast);
   border-radius: var(--border-md);
   transition: all 80ms ease-in;
+
+  // svg's aren't centered vertically
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 button.outline, .btn.outline{
@@ -65,7 +70,6 @@ button.clear, .btn.clear {
   color: var(--color-accent);
   padding: 0;
   border: none;
-
 }
 
 button:hover, button:focus, .btn:hover, .btn:focus {
