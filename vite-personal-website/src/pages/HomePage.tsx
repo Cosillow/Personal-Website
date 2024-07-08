@@ -45,10 +45,8 @@ const HomePage = () => {
           <div className="wrapper">
             <h1 className="font-xl">Connor Silloway</h1>
             <Subheading className="font-md m-b-sm">ITWS and CS dual major</Subheading>
-            <Link to="/projects">
-              <button className="outline">
+            <Link className="btn outline" to="/projects">
                 See Projects
-              </button>
             </Link>
           </div>
         </InfoHeader>
