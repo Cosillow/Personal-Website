@@ -23,7 +23,7 @@ const HeaderOffset = styled.div`
 
 const CollapsibleHeader = styled.header`
     z-index: 999;
-    background: var(--color-secondary);
+    background: var(--color-primary);
     position: fixed;
     top: 0;
     left: 0;
