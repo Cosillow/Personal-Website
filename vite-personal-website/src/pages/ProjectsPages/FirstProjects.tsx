@@ -2,17 +2,15 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const ParallaxBG = styled.div`
-    /* background-color: #e5e5f7; */
-    opacity: 0.6;
     background-image: radial-gradient(var(--color-accent) 1.6500000000000001px, var(--color-primary ) 1.6500000000000001px);
-    background-size: 33px 33px;
-
-    
+    background-size: 33px 33px;    
     background-attachment: fixed;
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
+    // Set stacking context (without this, the before on BackgroundHeading doesn't show)
+    position: relative;
+    z-index: 1;
 `
 
 const BackgroundHeading = styled.h1`
@@ -56,7 +54,7 @@ const projectCard: React.FC<ProjectCardProps> = (props: ProjectCardProps) => {
         <ProjectCard key={props.name} className="bg-secondary">
             <h2 className="font-md">{props.name}</h2>
             <p className="font-xs">{props.description}</p>
-            <h3 className="font-sm m-v-sm m-l-sm">Skills</h3>
+            <h3 className="font-sm m-v-sm m-l-sm">Technologies:</h3>
             <ul className="styled font-sm">
                 {props.tags.map((tag: string, index: number) =>
                     <li key={index}>{tag}</li>
