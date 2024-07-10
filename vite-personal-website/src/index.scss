@@ -1,10 +1,10 @@
 :root {
-    --color-primary: rgb(225,249,227);
-    --color-primary-contrast: rgb(0, 0, 0);
-    --color-secondary: rgb(213,239,251);
-    --color-secondary-contrast: rgb(0, 0, 0);
-    --color-accent: rgb(89,78,244);
+    --color-primary: rgb(31,76,58);
     --color-accent-contrast: rgb(255, 255, 255);
+    --color-secondary: rgb(199,226,250);
+    --color-secondary-contrast: rgb(0, 0, 0);
+    --color-accent: rgb(139,97,255);
+    --color-accent-contrast: rgb(255, 255, 255);    
 
     --font-xs: clamp(0.8rem, 1rem + 2vw, 1.2rem);
     --font-sm: clamp(1rem, 1rem + 2vw, 1.4rem);

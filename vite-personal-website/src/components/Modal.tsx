@@ -14,6 +14,10 @@ const DialogModal: any = styled.dialog`
     background: rgba(0, 0, 0, 0.3);
   }
 
+  background-color: var(--color-secondary);
+
+  color: var(--color-secondary-contrast);
+
   border: none;
   border-radius: 18px;
   box-shadow: 0 0 #0000, 0 0 #0000, 0 25px 50px -12px rgba(0, 0, 0, 0.25);
@@ -90,7 +94,7 @@ const Modal: React.FC<{
   return (
     <>
       {createPortal(
-        <DialogModal className="bg-secondary" ref={dialogRef} onCancel={ closeModal } onClick={ dialogClicked } >
+        <DialogModal ref={dialogRef} onCancel={ closeModal } onClick={ dialogClicked } >
             <DialogContainer onClick={ dialogContainerClicked }>
               <button className="font-lg clear close-modal" onClick={ closeModal } >
                 <BiX></BiX>

@@ -78,8 +78,8 @@ export const themeSlice = createSlice({
             state[action.payload.colorType] = action.payload.color;
             // change css color-contrast
             document.documentElement.style.setProperty(`--color-${action.payload.colorType}-contrast`, new Color(action.payload.color).contrast().toHSL());
-
             // change css color-rgb
+            document.documentElement.style.setProperty(`--color-${action.payload.colorType}-rgb`, new Color(action.payload.color).toList());
         }
     },
 })

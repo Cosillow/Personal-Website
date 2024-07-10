@@ -33,7 +33,6 @@ const BackgroundImage = styled.div<BackgroundImageProps>`
 
 const Subheading = styled.p`
   color: grey;
-  /* margin-bottom: 2em; */
 `
 
 const HomePage = () => {

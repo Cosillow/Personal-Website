@@ -6,14 +6,13 @@ import {
   Picker,
   Slider,
 } from "./styles";
-import { useEffect } from "react";
 
 const SliderStack = styled.div`
   display: flex;
   flex-direction: column;
 
   & > * + *{
-    margin-top: 2em;
+    margin-top: 1.5em;
   }
   
 `
