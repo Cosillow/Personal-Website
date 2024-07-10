@@ -4,8 +4,6 @@ import { BiX } from "react-icons/bi";
 import styled from "styled-components";
 
 const DialogModal: any = styled.dialog`
-
-  padding: 1em 2em;
   .close-modal {
     position: absolute;
     top: 10px;
@@ -17,10 +15,9 @@ const DialogModal: any = styled.dialog`
   }
 
   border: none;
-  border-radius: calc(5px * 3.74);
+  border-radius: 18px;
   box-shadow: 0 0 #0000, 0 0 #0000, 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  padding: 1.6rem;
-  /* max-width: 400px; */
+  padding: 0;
 
   position: fixed;
   left: 50%;
@@ -28,6 +25,13 @@ const DialogModal: any = styled.dialog`
   transform: translate(-50%, -50%);
   z-index: 999999;
 `;
+
+const DialogContainer: any = styled.div`
+  // this exists to allow clicking the background of the dialog to close
+  width: 100%;
+  height: 100%;
+  padding: 3rem;
+`
 
 const Modal: React.FC<{
   title: string,
@@ -40,17 +44,19 @@ const Modal: React.FC<{
 
   useEffect(() => {
     if (!dialogRef || !open) {
-      // modal closed
+      // modal closing
       enableScroll();
       return;
     }
 
-    // modal is open
+    // modal is opening
     topScroll = window.scrollY || document.documentElement.scrollTop;
     leftScroll = window.scrollX || document.documentElement.scrollLeft;
 
     
     dialogRef.current?.showModal()
+    // Set focus to the dialog (default focus is the close button, which ruins the hover animation)
+    dialogRef.current?.focus();
     disableScroll();
 
     return () => {
@@ -72,16 +78,26 @@ const Modal: React.FC<{
     enableScroll();
   }
 
+  const dialogClicked = () => {
+    closeModal();
+  }
+
+  const dialogContainerClicked = (event: React.MouseEvent) => {
+    // prevent dialogClicked --> closeModal()
+    event.stopPropagation()
+  }
+
   return (
     <>
       {createPortal(
-        <DialogModal ref={dialogRef} onCancel={ closeModal }  >
-          <button className="font-sm clear close-modal" onClick={ closeModal } >
-            <BiX></BiX>
-          </button>
-
-          <h3 className="font-sm">{title}</h3>
-          {children}
+        <DialogModal ref={dialogRef} onCancel={ closeModal } onClick={ dialogClicked } >
+            <DialogContainer onClick={ dialogContainerClicked }>
+              <button className="font-lg clear close-modal" onClick={ closeModal } >
+                <BiX></BiX>
+              </button>
+              <h3 className="font-sm text-center">{title}</h3>
+              {children}
+            </DialogContainer>
         </DialogModal>,
         document.getElementById('root')!
       )}
