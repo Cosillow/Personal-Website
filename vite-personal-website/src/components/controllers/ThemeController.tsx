@@ -34,12 +34,20 @@ const DisplayColorDiv = styled.div<{
 const ThemeController = () => {
 
     const [selectedProperty, setSelectedProperty] = useState<string>('primary');
+    const [previousTheme, setPreviousTheme] = useState<ColorScheme>();    
     const stateTheme: ColorScheme = useTheme();
     const dispatch = useDispatch();
 
     useEffect(()=>{
-        setThemeColors(dispatch, getRootColorScheme());
+        const ROOT_THEME = getRootColorScheme();
+        setPreviousTheme(ROOT_THEME);
+        setThemeColors(dispatch, ROOT_THEME);
     },[]);
+
+    const revertTheme = () => {
+        setPreviousTheme(getRootColorScheme());
+        setThemeColors(dispatch, previousTheme!);
+    }
 
     const userPickedColor = (color: Color) => {
         // user is changing the current active theme based on the selectedProperty
@@ -96,6 +104,8 @@ const ThemeController = () => {
                     <IoCopyOutline></IoCopyOutline>
                 </button>
             </div>
+
+            {previousTheme && <button onClick={ revertTheme }>revert</button>}
 
             {/* <DisplayColorDiv background={stateTheme[selectedProperty as keyof ColorScheme].toList()}></DisplayColorDiv> */}
             <ColorPicker currentColor={stateTheme[selectedProperty as keyof ColorScheme]} returnSelectedColor={userPickedColor}></ColorPicker>
