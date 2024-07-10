@@ -56,8 +56,6 @@ const Modal: React.FC<{
 
     
     dialogRef.current?.showModal()
-    // Set focus to the dialog (default focus is the close button, which ruins the hover animation)
-    dialogRef.current?.focus();
     disableScroll();
 
     return () => {
@@ -92,7 +90,7 @@ const Modal: React.FC<{
   return (
     <>
       {createPortal(
-        <DialogModal ref={dialogRef} onCancel={ closeModal } onClick={ dialogClicked } >
+        <DialogModal className="bg-secondary" ref={dialogRef} onCancel={ closeModal } onClick={ dialogClicked } >
             <DialogContainer onClick={ dialogContainerClicked }>
               <button className="font-lg clear close-modal" onClick={ closeModal } >
                 <BiX></BiX>

@@ -43,7 +43,7 @@ export const setThemeColors = (dispatch: Dispatch, colorScheme: ColorScheme) => 
     // allow the user to use a reducer with the custom `Color` class
     THEME_VARIABLES.forEach((variable) => {
         dispatch(setColor({ colorType: variable, color: colorScheme[variable as keyof ColorScheme].toHSL() }));
-    })
+    });
 };
 
 
@@ -77,6 +77,7 @@ export const themeSlice = createSlice({
             document.documentElement.style.setProperty(`--color-${action.payload.colorType}`, action.payload.color);
             state[action.payload.colorType] = action.payload.color;
             // change css color-contrast
+            document.documentElement.style.setProperty(`--color-${action.payload.colorType}-contrast`, new Color(action.payload.color).contrast().toHSL());
 
             // change css color-rgb
         }
