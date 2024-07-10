@@ -36,8 +36,9 @@ const DialogContainer: any = styled.div`
 const Modal: React.FC<{
   title: string,
   children: JSX.Element,
-  open: number
-}> = ({ title, children, open }) => {
+  open: number,
+  scrollDisabled?: boolean
+}> = ({ title, children, open, scrollDisabled=false }) => {
   const dialogRef = useRef<HTMLDialogElement | null>();
   let topScroll: number = 0;
   let leftScroll: number = 0;
@@ -66,6 +67,7 @@ const Modal: React.FC<{
 
 
   const disableScroll = () => {
+    if (!scrollDisabled) return;
     document.body.classList.add('disable-scrolling')
   };
 
