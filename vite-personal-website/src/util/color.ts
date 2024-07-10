@@ -1,3 +1,12 @@
+/*
+ * This file includes work from the Ionic repository, licensed under the Apache License, Version 2.0
+ * (http://www.apache.org/licenses/LICENSE-2.0). Modifications have been made to this file.
+ *
+ * Original copyright notice:
+ * Copyright 2016 Drifty Co.
+ */
+
+
 export interface RGB {
     b: number;
     g: number;
