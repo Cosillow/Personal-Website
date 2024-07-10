@@ -50,7 +50,6 @@ export const setThemeColors = (dispatch: Dispatch, colorScheme: ColorScheme) => 
 // save/get data from redux
 const dataToColorScheme = (data: ThemeData): ColorScheme => {
     return Object.entries(data).reduce((acc, [key, value]) => {
-        console.log(value)
         acc[key as keyof ColorScheme] = new Color(value);
         return acc;
     }, {} as ColorScheme);
