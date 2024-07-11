@@ -16,11 +16,11 @@ const ParallaxBG = styled.div`
 const BackgroundHeading = styled.h1`
     width: fit-content;
     position: relative;
+    background: transparent;
 
     &::before {
         content: '';
         background: var(--color-primary);
-        /* background: blue; */
         display: block;
         width: 120%;
         height: 60%;

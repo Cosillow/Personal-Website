@@ -33,7 +33,6 @@ const BackgroundImage = styled.div<BackgroundImageProps>`
 
 const Subheading = styled.p`
   color: grey;
-  /* margin-bottom: 2em; */
 `
 
 const HomePage = () => {
@@ -51,9 +50,7 @@ const HomePage = () => {
           </div>
         </InfoHeader>
         <div className="col-6 center-child">
-          <BackgroundImage url='url("/cropped-connor-photo.png")' >
-            
-          </BackgroundImage>
+          <BackgroundImage url='url("/cropped-connor-photo.png")'></BackgroundImage>
         </div>
       </div>
     </HeroSection>

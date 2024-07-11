@@ -11,8 +11,14 @@ const DialogModal: any = styled.dialog`
   }
 
   &::backdrop {
-    background: rgba(0, 0, 0, 0.3);
+    opacity: 0.3;
+    background-size: 90px 90px;
+    background-image: repeating-linear-gradient(45deg, #000000 0, #000000 2.8000000000000003px, transparent 0, transparent 50%);
   }
+
+  background-color: var(--color-secondary);
+
+  color: var(--color-secondary-contrast);
 
   border: none;
   border-radius: 18px;
@@ -56,8 +62,6 @@ const Modal: React.FC<{
 
     
     dialogRef.current?.showModal()
-    // Set focus to the dialog (default focus is the close button, which ruins the hover animation)
-    dialogRef.current?.focus();
     disableScroll();
 
     return () => {

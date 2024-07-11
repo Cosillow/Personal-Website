@@ -23,11 +23,11 @@ export interface ColorScheme {
 }
 
 export const THEME_VARIABLES: string[] =
-    [
-        "primary",
-        "secondary",
-        "accent"
-    ]
+[
+    "primary",
+    "secondary",
+    "accent"
+]
 
 export const useTheme = (): ColorScheme => {
     return useSelector((state: any) => dataToColorScheme(state.theme));
@@ -41,14 +41,15 @@ export const setThemeColor = (dispatch: Dispatch, colorType: string, color: Colo
 
 export const setThemeColors = (dispatch: Dispatch, colorScheme: ColorScheme) => {
     // allow the user to use a reducer with the custom `Color` class
-    dispatch(setColorScheme(colorSchemeToData(colorScheme)));
+    THEME_VARIABLES.forEach((variable) => {
+        dispatch(setColor({ colorType: variable, color: colorScheme[variable as keyof ColorScheme].toHSL() }));
+    });
 };
 
 
 // save/get data from redux
 const dataToColorScheme = (data: ThemeData): ColorScheme => {
     return Object.entries(data).reduce((acc, [key, value]) => {
-        console.log(value)
         acc[key as keyof ColorScheme] = new Color(value);
         return acc;
     }, {} as ColorScheme);
@@ -72,21 +73,17 @@ export const themeSlice = createSlice({
     initialState,
     reducers: {
         setColor: (state: any, action: { payload: { colorType: string, color: string }, type: string }) => {
+            // change css color
             document.documentElement.style.setProperty(`--color-${action.payload.colorType}`, action.payload.color);
             state[action.payload.colorType] = action.payload.color;
-        },
-        setColorScheme: (state: any, action: {
-            payload: ThemeData;
-            type: string;
-        }) => {
-            THEME_VARIABLES.forEach((variable) => {
-                document.documentElement.style.setProperty(`--color-${variable}`, action.payload[variable as keyof ColorScheme]);
-                state[variable] = action.payload[variable as keyof ColorScheme];
-            })
-        },
+            // change css color-contrast
+            document.documentElement.style.setProperty(`--color-${action.payload.colorType}-contrast`, new Color(action.payload.color).contrast().toHSL());
+            // change css color-rgb
+            document.documentElement.style.setProperty(`--color-${action.payload.colorType}-rgb`, new Color(action.payload.color).toList());
+        }
     },
 })
 
-export const { setColorScheme, setColor } = themeSlice.actions
+export const { setColor } = themeSlice.actions
 
 export default themeSlice.reducer

@@ -21,6 +21,20 @@ See what [the portfolio](https://connor-silloway-portfolio.netlify.app/) looks l
 - add some personal things (not on projects page)
 	- hobbies/interests
 	- Spotify API interaction
+
+### Known Issues
+- Theme picker console warning:
+```js
+console.js:288 Over 200 classes were generated for component styled.input with the id of "sc-dmqHEX".
+Consider using the attrs method, together with a style object for frequently changed styles.
+Example:
+  const Component = styled.div.attrs(props => ({
+    style: {
+      background: props.background,
+    },
+  }))`width: 100%;`
+```
+
 ## Connor Silloway's Development Journey
 I was first introduced to programming with a summer Scratch boot camp in elementary school. We created simple games and made sprites dance across the screen.
 
