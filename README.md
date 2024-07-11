@@ -11,6 +11,7 @@ I used this site for 3 years, until I found myself lacking in a fairly important
 See what [the portfolio](https://connor-silloway-portfolio.netlify.app/) looks like today!
 
 ### The Future of This Portfolio (TO-DOs)
+- button click reduce size anim
 - adjust theme picker for easier copy-paste and correct contrast color
 	- consider comma separated rgb #'s for css opacity changes
 - add some more _design_ to showcase my CSS skills and front-end abilities

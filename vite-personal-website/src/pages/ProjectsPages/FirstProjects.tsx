@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import Carousel from "../../components/Carousel";
+import { ProjectCardProps } from "../../components/controllers/ProjectsController";
 
 const ParallaxBG = styled.div`
     background-image: radial-gradient(var(--color-accent) 1.6500000000000001px, var(--color-primary ) 1.6500000000000001px);
@@ -32,22 +34,12 @@ const BackgroundHeading = styled.h1`
     }
 `;
 
-interface ProjectCardProps {
-    name: string
-    tags: string[]
-    description: string
-    link: string
-    thumbnail: string
-    image: string
-}
-
 const ProjectCard = styled.article`
     padding: 3em;
     border-radius: 50px;
     margin-bottom: 4em;
     position: relative;
 `
-
 
 const projectCard: React.FC<ProjectCardProps> = (props: ProjectCardProps) => {
     return (
@@ -61,10 +53,10 @@ const projectCard: React.FC<ProjectCardProps> = (props: ProjectCardProps) => {
                 )}
             </ul>
             {props.link && <div className="row justify-flex-end"><Link className="m-t-lg m-r-xl" to={props.link}><button className="m-sm">vist</button></Link></div>}
+            <Carousel images={props.images}></Carousel>
         </ProjectCard>
     );
 }
-
 
 type FirstProjectsProps = {
     projects: any
