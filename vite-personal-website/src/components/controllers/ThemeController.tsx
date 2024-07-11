@@ -5,6 +5,7 @@ import { Color } from "../../util/color";
 import ColorPicker from "../ThemeSelector/HSLPicker";
 import { useDispatch } from "react-redux";
 import { THEME_VARIABLES, ColorScheme, useTheme, setThemeColor, setThemeColors } from "../../redux/slices/themeSlice";
+import { IoIosSwap } from "react-icons/io";
 
 const DisplayColorDiv = styled.div<{
     background: string;
@@ -39,6 +40,8 @@ const ThemeController = () => {
     const dispatch = useDispatch();
 
     useEffect(()=>{
+        // only on site load/reload
+        // component exists for session lifetime
         const ROOT_THEME = getRootColorScheme();
         setPreviousTheme(ROOT_THEME);
         setThemeColors(dispatch, ROOT_THEME);
@@ -69,11 +72,12 @@ const ThemeController = () => {
 
     const copyStyling = async (): Promise<boolean> => {
         // turn theme into string
-        let text: string = ":root {\n";
+        let text: string = "";
         for (const [key, value] of Object.entries(stateTheme)) {
-            text += `\t--color-${key}: rgb(${value.toList()});\n`;
+            text += `--color-${key}: rgb(${value.toList()});\n`;
+            text += `--color-${key}-contrast: rgb(${value.contrast().toList()});\n`;
+            text += `--color-${key}-rgb: ${value.toList()};\n`;
         }
-        text += `}\n`;
 
         // copy string to clipboard
         if (!navigator.clipboard) {
@@ -105,11 +109,10 @@ const ThemeController = () => {
                 </button>
             </div>
 
-            {previousTheme && <button onClick={ revertTheme }>revert</button>}
-
             {/* <DisplayColorDiv background={stateTheme[selectedProperty as keyof ColorScheme].toList()}></DisplayColorDiv> */}
             <ColorPicker currentColor={stateTheme[selectedProperty as keyof ColorScheme]} returnSelectedColor={userPickedColor}></ColorPicker>
             {/* <HexPicker currentColor={stateTheme[selectedProperty as keyof ColorScheme]} returnSelectedColor={userPickedColor}></HexPicker> */}
+            {previousTheme && <button className="clear m-t-sm font-lg" onClick={ revertTheme }><IoIosSwap></IoIosSwap></button>}
         </>
     );
 }
