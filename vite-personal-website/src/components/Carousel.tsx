@@ -9,12 +9,15 @@ const CarouselViewport: any = styled.div`
 `
 
 const ScrollContainer: any = styled.div`
-    width: 100%;
+    position: relative;
+    left: 100%;
+    display: grid;
+    grid-auto-flow: column;
+    width: max-content;
     height: 250px;
-    display: flex;
-    flex-direction: row;
 
     img {
+        height: 250px;
         margin-right: 1em;
         margin-left: 1em;
     }
@@ -27,45 +30,55 @@ interface CarouselProps {
  
 const Carousel: FunctionComponent<CarouselProps> = ({ images, directionLeft = true }) => {
     const scrollContainerRef = useRef<HTMLDivElement | null>(null);
-    const [isScrolling, setIsScrolling] = useState(true);
-
+    const viewportRef = useRef<HTMLDivElement | null>(null);
 
     // looping can be solved by having two/three instances of the images, then plopping them on either side when we go too far
 
     // TODO: this is by far not seemless, especially with the gifs (no hotswapping will work)
+    
+    // TODO: 
 
     useEffect(() => {
         const SCROLL_CONTAINER = scrollContainerRef.current;
-        if (SCROLL_CONTAINER) {
-          const totalScrollWidth = SCROLL_CONTAINER.scrollWidth;
-          const containerWidth = SCROLL_CONTAINER.clientWidth;
-          const scrollDistance = totalScrollWidth - containerWidth;
+        const VIEWPORT = viewportRef.current;
+        if (!SCROLL_CONTAINER || !VIEWPORT) return;
     
-          const animation = SCROLL_CONTAINER.animate(
-            [
-              { transform: 'translateX(0)' },
-              { transform: `translateX(-${scrollDistance}px)` }
-            ],
-            {
-              duration: 2* images.length * 4000, // 4s per image-ish? (can be adjusted w/ component prop) */
-              iterations: Infinity,
-            }
-          );
-    
-          return () => {
-            animation.cancel();
-          };
+        const SCROLL_DISTANCE = SCROLL_CONTAINER.clientWidth + VIEWPORT.clientWidth;
+        const KEYFRAMES = directionLeft ?
+        [
+            { transform: 'translateX(0)' },
+            { transform: `translateX(-${SCROLL_DISTANCE}px)` },
+        ]
+        : 
+        [
+            { transform: `translateX(-${SCROLL_DISTANCE}px)` },
+            { transform: 'translateX(0)' },
+        ];
+
+        const animation = SCROLL_CONTAINER.animate(
+            KEYFRAMES,
+        {
+            duration: images.length * 4000, // 4s per image-ish? (can be adjusted w/ component prop) */
+            iterations: Infinity,
         }
-      }, [images.length]);
+        );
+
+        animation.addEventListener('finish', () => {
+            console.log(images)
+        });
+        
+    
+        return () => {
+        animation.cancel();
+        };
+    
+      }, []);
 
     return ( 
-        <CarouselViewport>
+        <CarouselViewport ref={viewportRef}>
             <ScrollContainer ref={scrollContainerRef}>
                 {images.length && images.map((img, i) => {
                         return <img src={img} key={i} />
-                    })}
-                {images.length && images.map((img, i) => {
-                        return <img src={img} key={i*2} />
                     })}
             </ScrollContainer>
         </CarouselViewport>
