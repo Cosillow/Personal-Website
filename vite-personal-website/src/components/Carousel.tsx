@@ -35,12 +35,6 @@ const Carousel: FunctionComponent<CarouselProps> = ({ images, directionLeft = tr
     // all images must be loaded before the JS animation starts to get an accurate width
     const [imagesLoaded, setImagesLoaded] = useState(false);
 
-    // looping can be solved by having two/three instances of the images, then plopping them on either side when we go too far
-
-    // TODO: this is by far not seemless, especially with the gifs (no hotswapping will work)
-    
-    // TODO: 
-
     useEffect(() => {
         if (!imagesLoaded) return;
         const SCROLL_CONTAINER = scrollContainerRef.current;
@@ -59,7 +53,7 @@ const Carousel: FunctionComponent<CarouselProps> = ({ images, directionLeft = tr
             { transform: 'translateX(0)' },
         ];
 
-        const animation = SCROLL_CONTAINER.animate(
+        const ANIMATION = SCROLL_CONTAINER.animate(
             KEYFRAMES,
         {
             duration: images.length * 4000, // 4s per image-ish? (can be adjusted w/ component prop) */
@@ -67,13 +61,13 @@ const Carousel: FunctionComponent<CarouselProps> = ({ images, directionLeft = tr
         }
         );
 
-        animation.addEventListener('finish', () => {
+        ANIMATION.addEventListener('finish', () => {
             console.log(images)
         });
         
     
         return () => {
-        animation.cancel();
+            ANIMATION.cancel();
         };
     
       }, [imagesLoaded]);
