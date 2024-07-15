@@ -32,6 +32,9 @@ const Carousel: FunctionComponent<CarouselProps> = ({ images, directionLeft = tr
     const scrollContainerRef = useRef<HTMLDivElement | null>(null);
     const viewportRef = useRef<HTMLDivElement | null>(null);
 
+    // all images must be loaded before the JS animation starts to get an accurate width
+    const [imagesLoaded, setImagesLoaded] = useState(false);
+
     // looping can be solved by having two/three instances of the images, then plopping them on either side when we go too far
 
     // TODO: this is by far not seemless, especially with the gifs (no hotswapping will work)
@@ -39,6 +42,7 @@ const Carousel: FunctionComponent<CarouselProps> = ({ images, directionLeft = tr
     // TODO: 
 
     useEffect(() => {
+        if (!imagesLoaded) return;
         const SCROLL_CONTAINER = scrollContainerRef.current;
         const VIEWPORT = viewportRef.current;
         if (!SCROLL_CONTAINER || !VIEWPORT) return;
@@ -72,14 +76,20 @@ const Carousel: FunctionComponent<CarouselProps> = ({ images, directionLeft = tr
         animation.cancel();
         };
     
-      }, []);
+      }, [imagesLoaded]);
+
+    const handleImageLoad = () => {
+        if (!scrollContainerRef.current) return;
+        const images = scrollContainerRef.current.querySelectorAll('img');
+        if (Array.from(images).every((img) => img.complete)) {
+            setImagesLoaded(true);
+        } else setImagesLoaded(false);
+    };
 
     return ( 
         <CarouselViewport ref={viewportRef}>
             <ScrollContainer ref={scrollContainerRef}>
-                {images.length && images.map((img, i) => {
-                        return <img src={img} key={i} />
-                    })}
+                {images.length && images.map((img, i) => <img src={img} key={i} onLoad={handleImageLoad} /> )}
             </ScrollContainer>
         </CarouselViewport>
     );
