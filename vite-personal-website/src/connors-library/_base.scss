@@ -6,7 +6,6 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  background: inherit;
   color: inherit;
   font: inherit;
   margin: 0;
@@ -85,6 +84,7 @@ button.clear:hover, button.clear:active, .btn.clear:hover, .btn.clear:active {
 input, select {
   border-radius: 5px;
   border-color: var(--color-accent);
+  background: inherit;
 }
 
 select {
