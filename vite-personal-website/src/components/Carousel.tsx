@@ -31,46 +31,81 @@ interface CarouselProps {
 const Carousel: FunctionComponent<CarouselProps> = ({ images, directionLeft = true }) => {
     const scrollContainerRef = useRef<HTMLDivElement | null>(null);
     const viewportRef = useRef<HTMLDivElement | null>(null);
+    const animationRef = useRef<Animation | null>(null);
 
     // all images must be loaded before the JS animation starts to get an accurate width
     const [imagesLoaded, setImagesLoaded] = useState(false);
 
     useEffect(() => {
-        if (!imagesLoaded) return;
+        const handleResize = () => {
+            pauseAnimation();
+            updateAnimation();
+            playAnimation();
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
+    useEffect(() => {
+        updateAnimation();
+        
+        return () => {
+            if (!animationRef.current) return;
+            animationRef.current.cancel();
+        };
+    }, [imagesLoaded]);
+
+    const updateAnimation = () => {
+        if (!scrollContainerRef.current || !viewportRef.current) return;
+
         const SCROLL_CONTAINER = scrollContainerRef.current;
         const VIEWPORT = viewportRef.current;
-        if (!SCROLL_CONTAINER || !VIEWPORT) return;
-    
+
         const SCROLL_DISTANCE = SCROLL_CONTAINER.clientWidth + VIEWPORT.clientWidth;
-        const KEYFRAMES = directionLeft ?
-        [
-            { transform: 'translateX(0)' },
-            { transform: `translateX(-${SCROLL_DISTANCE}px)` },
-        ]
-        : 
-        [
-            { transform: `translateX(-${SCROLL_DISTANCE}px)` },
-            { transform: 'translateX(0)' },
-        ];
+        const KEYFRAMES = directionLeft
+            ? [
+                { transform: 'translateX(0)' },
+                { transform: `translateX(-${SCROLL_DISTANCE}px)` },
+            ]
+            : [
+                { transform: `translateX(-${SCROLL_DISTANCE}px)` },
+                { transform: 'translateX(0)' },
+            ];
 
         const ANIMATION = SCROLL_CONTAINER.animate(
             KEYFRAMES,
-        {
-            duration: images.length * 4000, // 4s per image-ish? (can be adjusted w/ component prop) */
-            iterations: Infinity,
-        }
+            {
+                duration: images.length * 4000, // 4s per image-ish? (can be adjusted w/ component prop)
+                iterations: Infinity,
+            }
         );
 
         ANIMATION.addEventListener('finish', () => {
-            console.log(images)
+            console.log(images);
         });
-        
-    
-        return () => {
-            ANIMATION.cancel();
-        };
-    
-      }, [imagesLoaded]);
+
+        if (animationRef.current) {
+            animationRef.current.cancel();
+        }
+
+        animationRef.current = ANIMATION;
+    };
+
+    const playAnimation = () => {
+        if (animationRef.current) {
+            animationRef.current.play();
+        }
+    };
+
+    const pauseAnimation = () => {
+        if (animationRef.current) {
+            animationRef.current.pause();
+        }
+    };
 
     const handleImageLoad = () => {
         if (!scrollContainerRef.current) return;
@@ -81,7 +116,7 @@ const Carousel: FunctionComponent<CarouselProps> = ({ images, directionLeft = tr
     };
 
     return ( 
-        <CarouselViewport ref={viewportRef}>
+        <CarouselViewport ref={viewportRef} onMouseEnter={pauseAnimation} onMouseLeave={playAnimation}>
             <ScrollContainer ref={scrollContainerRef}>
                 {images.length && images.map((img, i) => <img src={img} key={i} onLoad={handleImageLoad} /> )}
             </ScrollContainer>
