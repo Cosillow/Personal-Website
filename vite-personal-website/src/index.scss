@@ -9,11 +9,13 @@
     --color-accent-contrast: rgb(255,255,255);
     --color-accent-rgb: 139,97,255;
 
+    --font-xxs: clamp(0.5rem, 1rem + 2vw, 0.8rem);
     --font-xs: clamp(0.8rem, 1rem + 2vw, 1.2rem);
     --font-s: clamp(1rem, 1rem + 2vw, 1.4rem);
     --font-m: clamp(1.2rem, 1rem + 2vw, 1.6rem);
     --font-l: clamp(1.4rem, 1rem + 2vw, 1.8rem);
     --font-xl: clamp(2.6rem, 1rem + 2vw, 3rem);
+    --font-xxl: clamp(3rem, 1rem + 2vw, 3.5rem);
 
     --margin-xxs: .25rem;
     --margin-xs: .5rem;
