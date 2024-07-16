@@ -5,7 +5,6 @@ const CarouselViewport: any = styled.div`
     position: relative;
     overflow: hidden;
     width: 100%;
-    height: 250px;
 `
 
 const ScrollContainer: any = styled.div`
@@ -14,12 +13,19 @@ const ScrollContainer: any = styled.div`
     display: grid;
     grid-auto-flow: column;
     width: max-content;
-    height: 250px;
+    height: 100%;
 
-    img {
-        height: 250px;
+    div {
+        height: 100%;
         margin-right: 1em;
         margin-left: 1em;
+        display: flex;
+        flex-direction: column;
+        
+
+        img {
+            height: 30vh;
+        }
     }
 `
 
@@ -79,7 +85,7 @@ const Carousel: FunctionComponent<CarouselProps> = ({ images, directionLeft = tr
         const ANIMATION = SCROLL_CONTAINER.animate(
             KEYFRAMES,
             {
-                duration: images.length * 4000, // 4s per image-ish? (can be adjusted w/ component prop)
+                duration: images.length * 10000, // 10s per image-ish? (can be adjusted w/ component prop)
                 iterations: Infinity,
             }
         );
@@ -116,9 +122,15 @@ const Carousel: FunctionComponent<CarouselProps> = ({ images, directionLeft = tr
     };
 
     return ( 
-        <CarouselViewport ref={viewportRef} onMouseEnter={pauseAnimation} onMouseLeave={playAnimation}>
+        <CarouselViewport ref={viewportRef} onTouchStart={pauseAnimation} onTouchEnd={playAnimation} 
+        onMouseEnter={pauseAnimation} onMouseLeave={playAnimation}>
             <ScrollContainer ref={scrollContainerRef}>
-                {images.length && images.map((img, i) => <img src={img} key={i} onLoad={handleImageLoad} /> )}
+                {images.length && images.map((img, i) => 
+                    <div key={i}>
+                        <img src={img} onLoad={handleImageLoad} />
+                        <p className="m-t-xs">testing!</p>
+                    </div>
+                )}
             </ScrollContainer>
         </CarouselViewport>
     );
