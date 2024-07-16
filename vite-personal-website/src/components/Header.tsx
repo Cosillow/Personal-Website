@@ -59,7 +59,7 @@ const CollapsibleHeader = styled.header`
     }
 `
 const ButtonLi = styled.li`
-    font-size: var(--font-lg);
+    font-size: var(--font-l);
 `
 
 const Header = ({ children }:
@@ -102,14 +102,14 @@ const Header = ({ children }:
                 <nav>
                     <ul>
                         {NAV_LINKS.map((link) =>
-                            <li className="font-sm" key={link.label}>
+                            <li className="font-s" key={link.label}>
                                 <Link to={link.href}>{link.label}</Link>
                             </li>
                         )}
                         {children !== undefined && <ButtonLi>{children}</ButtonLi>}
                     </ul>
                 </nav>
-                <button onClick={openModal} className="clear font-sm m-r-md">
+                <button onClick={openModal} className="clear font-s m-r-m">
                     <TbPaintFilled></TbPaintFilled><IoIosSwap></IoIosSwap>
                 </button>
                 <Modal title="Theme Controller" open={open}>

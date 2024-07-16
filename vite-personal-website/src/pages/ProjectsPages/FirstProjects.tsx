@@ -44,15 +44,15 @@ const ProjectCard = styled.article`
 const projectCard: React.FC<ProjectCardProps> = (props: ProjectCardProps) => {
     return (
         <ProjectCard key={props.name} className="bg-secondary">
-            <h2 className="font-md">{props.name}</h2>
+            <h2 className="font-m">{props.name}</h2>
             <p className="font-xs">{props.description}</p>
-            <h3 className="font-sm m-v-sm m-l-sm">Technologies:</h3>
-            <ul className="styled font-sm">
+            <h3 className="font-s m-v-s m-l-s">Technologies:</h3>
+            <ul className="styled font-s">
                 {props.tags.map((tag: string, index: number) =>
                     <li key={index}>{tag}</li>
                 )}
             </ul>
-            {props.link && <div className="row justify-flex-end"><Link className="m-t-lg m-r-xl" to={props.link}><button className="m-sm">vist</button></Link></div>}
+            {props.link && <div className="row justify-flex-end"><Link className="m-t-l m-r-xl" to={props.link}><button className="m-s">vist</button></Link></div>}
             <Carousel images={props.images}></Carousel>
         </ProjectCard>
     );
@@ -64,7 +64,7 @@ type FirstProjectsProps = {
 const FirstProjects = (props: FirstProjectsProps) => {
     return (
         <ParallaxBG>
-            <BackgroundHeading className="text-center font-xl p-v-sm">My Projects</BackgroundHeading>
+            <BackgroundHeading className="text-center font-xl p-v-s">My Projects</BackgroundHeading>
             <div className="container">
                     {
                         props.projects.map((project: ProjectCardProps) => {

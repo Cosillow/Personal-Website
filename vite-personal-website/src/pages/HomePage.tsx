@@ -43,8 +43,8 @@ const HomePage = () => {
         <InfoHeader className="col-6">
           <div className="wrapper">
             <h1 className="font-xl">Connor Silloway</h1>
-            <Subheading className="font-md m-b-sm">ITWS and CS dual major</Subheading>
-            <Link className="btn outline" to="/projects">
+            <Subheading className="font-m">ITWS and CS dual major</Subheading>
+            <Link className="btn outline m-t-xxl" to="/projects">
                 See Projects
             </Link>
           </div>

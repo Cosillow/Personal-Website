@@ -98,10 +98,10 @@ const Modal: React.FC<{
       {createPortal(
         <DialogModal ref={dialogRef} onCancel={ closeModal } onClick={ dialogClicked } >
             <DialogContainer onClick={ dialogContainerClicked }>
-              <button className="font-lg clear close-modal" onClick={ closeModal } >
+              <button className="font-l clear close-modal" onClick={ closeModal } >
                 <BiX></BiX>
               </button>
-              <h3 className="font-sm text-center">{title}</h3>
+              <h3 className="font-s text-center m-b-xxl">{title}</h3>
               {children}
             </DialogContainer>
         </DialogModal>,
