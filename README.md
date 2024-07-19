@@ -14,6 +14,7 @@ See what [the portfolio](https://connor-silloway-portfolio.netlify.app/) looks l
 - button click reduce size anim
 - add tooltip (it'd be good now for the copy btn in theme modal)
 - inverse proportional line height to font size
+- slight variations in the 3 main colors (for slight gradients)
 - adjust theme picker for easier copy-paste and correct contrast color
 	- consider comma separated rgb #'s for css opacity changes
 - add some more _design_ to showcase my CSS skills and front-end abilities
