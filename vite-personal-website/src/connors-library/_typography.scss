@@ -6,10 +6,8 @@
 
   h#{$i} {
     font-size: var(--font-#{$size});
+    font-weight: 900;
   }
-}
-h6 {
-  font-size: var(--font-xs);
 }
 
 .text-center {
