@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Carousel from "../../components/Carousel";
 import { ProjectCardProps } from "../../components/controllers/ProjectsController";
+import React from "react";
 
 const ParallaxBG = styled.div`
     background-image: radial-gradient(var(--color-accent) 1.6500000000000001px, var(--color-primary ) 1.6500000000000001px);
@@ -47,11 +48,10 @@ const ProjectContainer = styled.div`
 `
 
 const ProjectCard = styled.article`
-    padding: 3em;
+    /* padding: 3em; */
     border-radius: 10px;
     /* margin-bottom: 4em; */
     position: relative;
-    
     grid-column: span 1;
 `
 
@@ -59,15 +59,25 @@ const projectCard: React.FC<ProjectCardProps> = (props: ProjectCardProps) => {
     return (
         <ProjectCard key={props.name} className="bg-secondary">
             <Carousel images={props.images}></Carousel>
-            <h2 className="font-m">{props.name}</h2>
-            <p className="font-xs">{props.description}</p>
-            <h3 className="font-s m-v-s m-l-s">Technologies:</h3>
-            <ul className="styled font-s">
-                {props.tags.map((tag: string, index: number) =>
-                    <li key={index}>{tag}</li>
-                )}
-            </ul>
-            {props.link && <div className="row justify-flex-end"><Link className="m-t-l m-r-xl" to={props.link}><button className="m-s">vist</button></Link></div>}
+            <div className="p-h-l p-v-l">
+                <h2 className="font-m">{props.name}</h2>
+                <p className="font-xs m-t-xs">{props.description}</p>
+                <div className="m-t-xl row align-center justify-space-between">
+                    <p className="font-xxs">
+                        {props.tags.map((tag, index) => (
+                            <React.Fragment key={index}>
+                                {tag}
+                                {index < props.tags.length - 1 && <span className="m-h-s">|</span>}
+                            </React.Fragment>
+                        ))}
+                    </p>
+                    {props.link &&
+                            <Link className="btn" to={props.link}>
+                                vist
+                            </Link>
+                    }
+                </div>
+            </div>
         </ProjectCard>
     );
 }
