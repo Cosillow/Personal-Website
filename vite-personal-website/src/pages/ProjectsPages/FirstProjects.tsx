@@ -5,8 +5,9 @@ import { ProjectCardProps } from "../../components/controllers/ProjectsControlle
 
 const ParallaxBG = styled.div`
     background-image: radial-gradient(var(--color-accent) 1.6500000000000001px, var(--color-primary ) 1.6500000000000001px);
-    background-size: 33px 33px;    
+    background-size: 33px 33px; 
     background-attachment: fixed;
+    background-position: center;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -24,26 +25,40 @@ const BackgroundHeading = styled.h1`
         content: '';
         background: var(--color-primary);
         display: block;
-        width: 120%;
-        height: 60%;
+        width: 140%;
+        height: 120%;
         position: absolute;
-        left: -10%;
-        top: 20%;
+        left: -20%;
+        top: -10%;
         z-index: -1;
         border-radius: 50px;
     }
 `;
 
+const ProjectContainer = styled.div`
+    padding: clamp(25px, 5vw, 5vw);
+    width: 100%;
+    /* display: flex;
+    flex-wrap: wrap;
+    justify-content: center; */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+    gap: 10px;
+`
+
 const ProjectCard = styled.article`
     padding: 3em;
-    border-radius: 50px;
-    margin-bottom: 4em;
+    border-radius: 10px;
+    /* margin-bottom: 4em; */
     position: relative;
+    
+    grid-column: span 1;
 `
 
 const projectCard: React.FC<ProjectCardProps> = (props: ProjectCardProps) => {
     return (
         <ProjectCard key={props.name} className="bg-secondary">
+            <Carousel images={props.images}></Carousel>
             <h2 className="font-m">{props.name}</h2>
             <p className="font-xs">{props.description}</p>
             <h3 className="font-s m-v-s m-l-s">Technologies:</h3>
@@ -53,7 +68,6 @@ const projectCard: React.FC<ProjectCardProps> = (props: ProjectCardProps) => {
                 )}
             </ul>
             {props.link && <div className="row justify-flex-end"><Link className="m-t-l m-r-xl" to={props.link}><button className="m-s">vist</button></Link></div>}
-            <Carousel images={props.images}></Carousel>
         </ProjectCard>
     );
 }
@@ -64,14 +78,14 @@ type FirstProjectsProps = {
 const FirstProjects = (props: FirstProjectsProps) => {
     return (
         <ParallaxBG>
-            <BackgroundHeading className="text-center font-xl p-v-s">My Projects</BackgroundHeading>
-            <div className="container">
+            <BackgroundHeading className="text-center font-xl p-v-s m-t-xxl">My Projects</BackgroundHeading>
+            <ProjectContainer>
                     {
                         props.projects.map((project: ProjectCardProps) => {
                             return projectCard(project);
                         })
                     }
-            </div>
+            </ProjectContainer>
         </ParallaxBG>
         
     );
