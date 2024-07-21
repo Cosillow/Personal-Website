@@ -35,7 +35,7 @@ const DisplayColorDiv = styled.div<{
 const ThemeController = () => {
 
     const [selectedProperty, setSelectedProperty] = useState<string>('primary');
-    const [previousTheme, setPreviousTheme] = useState<ColorScheme>();    
+    const [previousTheme, setPreviousTheme] = useState<ColorScheme>();
     const stateTheme: ColorScheme = useTheme();
     const dispatch = useDispatch();
 

@@ -21,7 +21,6 @@ const ScrollContainer: any = styled.div`
         margin-left: 1em;
         display: flex;
         flex-direction: column;
-        
 
         img {
             height: 30vh;
@@ -34,7 +33,7 @@ interface CarouselProps {
     directionLeft?: boolean
 }
  
-const Carousel: FunctionComponent<CarouselProps> = ({ images, directionLeft = true }) => {
+const ContinuousCarousel: FunctionComponent<CarouselProps> = ({ images, directionLeft = true }) => {
     const scrollContainerRef = useRef<HTMLDivElement | null>(null);
     const viewportRef = useRef<HTMLDivElement | null>(null);
     const animationRef = useRef<Animation | null>(null);
@@ -90,10 +89,6 @@ const Carousel: FunctionComponent<CarouselProps> = ({ images, directionLeft = tr
             }
         );
 
-        ANIMATION.addEventListener('finish', () => {
-            console.log(images);
-        });
-
         if (animationRef.current) {
             animationRef.current.cancel();
         }
@@ -136,4 +131,4 @@ const Carousel: FunctionComponent<CarouselProps> = ({ images, directionLeft = tr
     );
 }
  
-export default Carousel;
+export default ContinuousCarousel;

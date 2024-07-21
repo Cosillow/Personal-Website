@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import Carousel from "../../components/Carousel";
+import Carousel from "../../components/ContinuousCarousel";
 import { ProjectCardProps } from "../../components/controllers/ProjectsController";
 import React from "react";
+import ContinuousCarousel from "../../components/ContinuousCarousel";
+import SingleCarousel from "../../components/SingleCarousel";
 
 const ParallaxBG = styled.div`
     background-image: radial-gradient(var(--color-accent) 1.6500000000000001px, var(--color-primary ) 1.6500000000000001px);
@@ -58,7 +60,7 @@ const ProjectCard = styled.article`
 const projectCard: React.FC<ProjectCardProps> = (props: ProjectCardProps) => {
     return (
         <ProjectCard key={props.name} className="bg-secondary">
-            <Carousel images={props.images}></Carousel>
+            <SingleCarousel images={props.images}></SingleCarousel>
             <div className="p-h-l p-v-l">
                 <h2 className="font-m">{props.name}</h2>
                 <p className="font-xs m-t-xs">{props.description}</p>
