@@ -4,7 +4,8 @@ import styled from "styled-components";
 const SINGLE_CAROUSEL_TRANSITION_TIME = 1;
 
 const Container: any = styled.div<{
-    containerWidth: number
+    containerWidth: number,
+    directionLeft: boolean
 }>`
     position: relative;
     height: 300px;
@@ -25,10 +26,11 @@ const Container: any = styled.div<{
 
         &.right {
             transform: translateX(${props => props.containerWidth}px);
-            transition: none;
+            ${props => props.directionLeft && "transition: none;"}
         }
         &.left {
             transform: translateX(-${props => props.containerWidth}px);
+            ${props => !props.directionLeft && "transition: none;"}
         }
     }
 `
@@ -83,21 +85,24 @@ const SingleCarousel: FunctionComponent<SingleCarouselProps> = ({ images, direct
     const cycle = ()=> {
         if (!ImgRef1.current || !ImgRef2.current) return;
 
-        if (ImgRef2.current.classList.contains('right')) {
-            ImgRef2.current.classList.remove('right');
-            ImgRef1.current.classList.add('left');
+        const START_DIR = directionLeft ? "right" : "left";
+        const END_DIR = directionLeft ? "left" : "right";
+
+        if (ImgRef2.current.classList.contains(START_DIR)) {
+            ImgRef2.current.classList.remove(START_DIR);
+            ImgRef1.current.classList.add(END_DIR);
 
             setTimeout(()=> {
-                ImgRef1.current!.classList.remove('left');
-                ImgRef1.current!.classList.add('right');
+                ImgRef1.current!.classList.remove(END_DIR);
+                ImgRef1.current!.classList.add(START_DIR);
             }, SINGLE_CAROUSEL_TRANSITION_TIME * 1000)
-        } else if (ImgRef1.current.classList.contains('right')) {
-            ImgRef1.current.classList.remove('right');
-            ImgRef2.current.classList.add('left');
+        } else if (ImgRef1.current.classList.contains(START_DIR)) {
+            ImgRef1.current.classList.remove(START_DIR);
+            ImgRef2.current.classList.add(END_DIR);
 
             setTimeout(()=> {
-                ImgRef2.current!.classList.remove('left');
-                ImgRef2.current!.classList.add('right');
+                ImgRef2.current!.classList.remove(END_DIR);
+                ImgRef2.current!.classList.add(START_DIR);
             }, SINGLE_CAROUSEL_TRANSITION_TIME * 1000)
         } else {
             alert("whops");
@@ -105,9 +110,9 @@ const SingleCarousel: FunctionComponent<SingleCarouselProps> = ({ images, direct
     }
 
     return ( 
-        <Container ref={containerRef} containerWidth={containerWidth}>
+        <Container ref={containerRef} containerWidth={containerWidth} directionLeft={directionLeft}>
             <img onClick={cycle} ref={ImgRef1} />
-            <img className="right" onClick={cycle} ref={ImgRef2} />
+            <img className={directionLeft ? 'right' : 'left'} onClick={cycle} ref={ImgRef2} />
         </Container>
     );
 }
