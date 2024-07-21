@@ -103,15 +103,13 @@ const SingleCarousel: FunctionComponent<SingleCarouselProps> = ({ images, direct
         } else if (ImgRef1.current.classList.contains(START_SIDE)) {
             rotateNewImg(ImgRef1.current, ImgRef2.current)
             setTimeout(()=> sendImgBack(ImgRef2.current), SINGLE_CAROUSEL_TRANSITION_TIME * 1000)
-        } else {
-            alert("unexpected state");
         }
     }
 
     return ( 
         <Container ref={containerRef} containerWidth={containerWidth} directionLeft={directionLeft}>
-            <img onClick={cycle} ref={ImgRef1} />
-            <img className={directionLeft ? 'right' : 'left'} onClick={cycle} ref={ImgRef2} />
+            <img onClick={cycle} ref={ImgRef1} alt="carousel image" />
+            <img className={directionLeft ? 'right' : 'left'} onClick={cycle} ref={ImgRef2} alt="carousel image" />
         </Container>
     );
 }

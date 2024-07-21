@@ -45,7 +45,7 @@ const ProjectContainer = styled.div`
     flex-wrap: wrap;
     justify-content: center; */
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 10px;
 `
 
@@ -62,23 +62,25 @@ const projectCard: React.FC<ProjectCardProps> = (props: ProjectCardProps) => {
     return (
         <ProjectCard key={props.name} className="bg-secondary">
             <SingleCarousel images={props.images}></SingleCarousel>
-            <div className="p-h-l p-v-l">
-                <h2 className="font-m">{props.name}</h2>
-                <p className="font-xs m-t-xs">{props.description}</p>
-                <div className="m-t-xl row align-center justify-space-between">
-                    <p className="font-xxs">
-                        {props.tags.map((tag, index) => (
-                            <React.Fragment key={index}>
-                                {tag}
-                                {index < props.tags.length - 1 && <span className="m-h-s">|</span>}
-                            </React.Fragment>
-                        ))}
-                    </p>
-                    {props.link &&
-                            <Link className="btn" to={props.link}>
-                                vist
-                            </Link>
-                    }
+            <div className="p-h-l p-v-s">
+                <h2 className="font-s">{props.name}</h2>
+                <div className="grey-1">
+                    <p className="font-xs">{props.description}</p>
+                    <div className="m-t-xl row align-center justify-space-between">
+                        <p className="font-xxs">
+                            {props.tags.map((tag, index) => (
+                                <React.Fragment key={index}>
+                                    {tag}
+                                    {index < props.tags.length - 1 && <span className="m-h-s">|</span>}
+                                </React.Fragment>
+                            ))}
+                        </p>
+                        {props.link &&
+                                <Link className="btn" to={props.link}>
+                                    vist
+                                </Link>
+                        }
+                    </div>
                 </div>
             </div>
         </ProjectCard>
