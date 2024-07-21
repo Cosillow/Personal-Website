@@ -45,6 +45,8 @@ const SingleCarousel: FunctionComponent<SingleCarouselProps> = ({ images, direct
     const ImgRef1 = useRef<HTMLImageElement | null>(null);
     const ImgRef2 = useRef<HTMLImageElement | null>(null);
     const imageObjectsRef = useRef<HTMLImageElement[]>([]);
+    const imgIndex = useRef<number>(0);
+
     const [containerWidth, setContainerWidth] = useState<number>(0);
 
     useEffect(() => {
@@ -55,57 +57,54 @@ const SingleCarousel: FunctionComponent<SingleCarouselProps> = ({ images, direct
             return IMG;
         });
 
-        restartGIF();
-
+        if (ImgRef1.current) {
+            ImgRef1.current.src = imageObjectsRef.current[imgIndex.current].src;
+        }
+        
         const handleResize = ()=> {
             if (!containerRef.current) return;
             setContainerWidth(containerRef.current.clientWidth);
         }
-
         handleResize();
 
-
         window.addEventListener('resize', handleResize);
-
         return () => {
             window.removeEventListener('resize', handleResize);
         };
     }, [images]);
 
-    const restartGIF = ()=> {
-        if (!ImgRef1.current) return;
-        ImgRef1.current.src = "";
-        ImgRef1.current.src = imageObjectsRef.current[images.length-1].src;
-
-        if (!ImgRef2.current) return;
-        ImgRef2.current.src = "";
-        ImgRef2.current.src = imageObjectsRef.current[images.length-1].src;
-    }
-
     const cycle = ()=> {
         if (!ImgRef1.current || !ImgRef2.current) return;
 
-        const START_DIR = directionLeft ? "right" : "left";
-        const END_DIR = directionLeft ? "left" : "right";
+        const START_SIDE = directionLeft ? "right" : "left";
+        const END_SIDE = directionLeft ? "left" : "right";
 
-        if (ImgRef2.current.classList.contains(START_DIR)) {
-            ImgRef2.current.classList.remove(START_DIR);
-            ImgRef1.current.classList.add(END_DIR);
+        const sendImgBack = (img: HTMLImageElement|null)=> {
+            if (!img) return;
+            img.classList.remove(END_SIDE);
+            img.classList.add(START_SIDE);
+        }
 
-            setTimeout(()=> {
-                ImgRef1.current!.classList.remove(END_DIR);
-                ImgRef1.current!.classList.add(START_DIR);
-            }, SINGLE_CAROUSEL_TRANSITION_TIME * 1000)
-        } else if (ImgRef1.current.classList.contains(START_DIR)) {
-            ImgRef1.current.classList.remove(START_DIR);
-            ImgRef2.current.classList.add(END_DIR);
+        const rotateNewImg = (newImg: HTMLImageElement|null, oldImg: HTMLImageElement|null)=> {
+            if (!newImg || !oldImg) return;
 
-            setTimeout(()=> {
-                ImgRef2.current!.classList.remove(END_DIR);
-                ImgRef2.current!.classList.add(START_DIR);
-            }, SINGLE_CAROUSEL_TRANSITION_TIME * 1000)
+            // grab img from memory right before it comes into view (good for gifs, start at the first frame)
+            imgIndex.current = (imgIndex.current + 1) % (images.length);
+            newImg.src = "";
+            newImg.src = imageObjectsRef.current[imgIndex.current].src;
+            
+            newImg.classList.remove(START_SIDE);
+            oldImg.classList.add(END_SIDE);
+        }
+
+        if (ImgRef2.current.classList.contains(START_SIDE)) {
+            rotateNewImg(ImgRef2.current, ImgRef1.current)
+            setTimeout(()=> sendImgBack(ImgRef1.current), SINGLE_CAROUSEL_TRANSITION_TIME * 1000)
+        } else if (ImgRef1.current.classList.contains(START_SIDE)) {
+            rotateNewImg(ImgRef1.current, ImgRef2.current)
+            setTimeout(()=> sendImgBack(ImgRef2.current), SINGLE_CAROUSEL_TRANSITION_TIME * 1000)
         } else {
-            alert("whops");
+            alert("unexpected state");
         }
     }
 
