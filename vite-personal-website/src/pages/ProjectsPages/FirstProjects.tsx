@@ -45,7 +45,7 @@ const ProjectContainer = styled.div`
     flex-wrap: wrap;
     justify-content: center; */
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
     gap: 10px;
 `
 
@@ -55,6 +55,7 @@ const ProjectCard = styled.article`
     /* margin-bottom: 4em; */
     position: relative;
     grid-column: span 1;
+    overflow: hidden;
 `
 
 const projectCard: React.FC<ProjectCardProps> = (props: ProjectCardProps) => {

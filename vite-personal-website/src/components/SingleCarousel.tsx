@@ -8,11 +8,11 @@ const Container: any = styled.div<{
     directionLeft: boolean
 }>`
     position: relative;
-    height: 300px;
+    min-height: 300px;
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: top;
     overflow: hidden;
 
     img {
@@ -20,7 +20,7 @@ const Container: any = styled.div<{
         max-height: 100%;
         max-width: 100%;
         object-fit: contain;
-        object-position: center;
+        object-position: cover;
 
         transition: ${SINGLE_CAROUSEL_TRANSITION_TIME}s ease-in-out;
 

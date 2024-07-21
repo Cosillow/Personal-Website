@@ -83,14 +83,20 @@ button.clear:hover, button.clear:active, .btn.clear:hover, .btn.clear:active {
 }
 
 input, select {
-  border-radius: 5px;
-  border-color: var(--color-accent);
-  background: inherit;
+  // border-radius: 5px;
+  // border-color: var(--color-accent);
+  // background: inherit;
+  color: black;
 }
 
-select {
-  padding: .5rem;
-}
+// select {
+//   padding: .5rem;
+// }
+
+// option {
+//   background: inherit !important;
+//   color: inherit !important;
+// }
 
 hr {
   border: 0;
