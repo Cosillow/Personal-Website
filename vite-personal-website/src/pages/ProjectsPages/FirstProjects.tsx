@@ -38,13 +38,14 @@ const projectCard: React.FC<ProjectCardProps> = (props: ProjectCardProps) => {
                             </React.Fragment>
                         ))}
                     </p>
-                    {props.link &&
-                        <div className="col-4 row justify-flex-end">
+                    <div className="col-4 row justify-flex-end">
+                        {props.link &&
                             <Link className="btn font-xxs" to={props.link}>
                                 vist
                             </Link>
-                        </div>
-                    }
+                        }
+                    </div>
+                    
                 </div>
             </div>
         </ProjectCard>
