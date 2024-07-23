@@ -6,6 +6,50 @@ import React from "react";
 import ContinuousCarousel from "../../components/ContinuousCarousel";
 import SingleCarousel from "../../components/SingleCarousel";
 
+const ProjectCard = styled.article`
+    border-radius: 10px;
+    position: relative;
+    grid-column: span 1;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+`
+
+const FlexChild = styled.div`
+    flex-grow: 1;
+`
+
+const projectCard: React.FC<ProjectCardProps> = (props: ProjectCardProps) => {
+    return (
+        <ProjectCard key={props.name} className="bg-secondary">
+            <SingleCarousel images={props.images}></SingleCarousel>
+            <div className="m-t-l p-h-l p-b-l">
+                <h2 className="font-l">{props.name}</h2>
+                <p className="m-t-xs font-s grey-1">{props.description}</p>
+                <div className="m-t-xxl row align-flex-end justify-space-between">
+                    <p className="font-xs grey-2 col-8">
+                        {props.tags.map((tag, index) => (
+                            <React.Fragment key={index}>
+                                {tag}
+                                {index < props.tags.length - 1 && <span className="m-h-s">|</span>}
+                            </React.Fragment>
+                        ))}
+                    </p>
+                    {props.link &&
+                        <div className="col-4 row justify-flex-end">
+                            <Link className="btn" to={props.link}>
+                                vist
+                            </Link>
+                        </div>
+                    }
+                </div>
+            </div>
+        </ProjectCard>
+    );
+}
+
 const ParallaxBG = styled.div`
     background-image: radial-gradient(var(--color-accent) 1.6500000000000001px, var(--color-primary ) 1.6500000000000001px);
     background-size: 33px 33px; 
@@ -39,52 +83,13 @@ const BackgroundHeading = styled.h1`
 `;
 
 const ProjectContainer = styled.div`
-    padding: clamp(25px, 5vw, 5vw);
+    padding: clamp(5px, 5px + 3vw, 100px);
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 10px;
+    align-items: center;
 `
-
-const ProjectCard = styled.article`
-    border-radius: 10px;
-    position: relative;
-    grid-column: span 1;
-    overflow: hidden;
-
-    display: flex;
-    flex-direction: column;
-    height: fit-content;
-`
-
-const projectCard: React.FC<ProjectCardProps> = (props: ProjectCardProps) => {
-    return (
-        <ProjectCard key={props.name} className="bg-secondary">
-                <SingleCarousel images={props.images}></SingleCarousel>
-                <div className="m-t-l p-h-l p-b-l">
-                    <h2 className="font-l">{props.name}</h2>
-                    <p className="m-t-xs font-s grey-1">{props.description}</p>
-                    <div className="m-t-xxl row align-flex-end justify-space-between">
-                        <p className="font-xs grey-2 col-8">
-                            {props.tags.map((tag, index) => (
-                                <React.Fragment key={index}>
-                                    {tag}
-                                    {index < props.tags.length - 1 && <span className="m-h-s">|</span>}
-                                </React.Fragment>
-                            ))}
-                        </p>
-                        {props.link &&
-                            <div className="col-4 row justify-flex-end">
-                                <Link className="btn" to={props.link}>
-                                    vist
-                                </Link>
-                            </div>
-                        }
-                    </div>
-                </div>
-        </ProjectCard>
-    );
-}
 
 type FirstProjectsProps = {
     projects: any
