@@ -6,7 +6,7 @@
 
   h#{$i} {
     font-size: var(--font-#{$size});
-    font-weight: 900;
+    font-weight: 500;
   }
 }
 
@@ -19,13 +19,13 @@
 }
 
 .grey-1 {
-  color: rgb(154, 154, 154);
+  opacity: 50%;
 }
 
 .grey-2 {
-  color: rgb(122, 122, 122);
+  opacity: 40%;
 }
 
 .grey-3 {
-  color: rgb(101, 101, 101);
+  opacity: 20%;
 }

@@ -41,33 +41,31 @@ const BackgroundHeading = styled.h1`
 const ProjectContainer = styled.div`
     padding: clamp(25px, 5vw, 5vw);
     width: 100%;
-    /* display: flex;
-    flex-wrap: wrap;
-    justify-content: center; */
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 10px;
 `
 
 const ProjectCard = styled.article`
-    /* padding: 3em; */
     border-radius: 10px;
-    /* margin-bottom: 4em; */
     position: relative;
     grid-column: span 1;
     overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
 `
 
 const projectCard: React.FC<ProjectCardProps> = (props: ProjectCardProps) => {
     return (
         <ProjectCard key={props.name} className="bg-secondary">
-            <SingleCarousel images={props.images}></SingleCarousel>
-            <div className="p-h-l p-v-s">
-                <h2 className="font-m">{props.name}</h2>
-                <div className="grey-1">
-                    <p className="font-xs">{props.description}</p>
-                    <div className="m-t-xl row align-flex-end justify-space-between">
-                        <p className="font-xxs">
+                <SingleCarousel images={props.images}></SingleCarousel>
+                <div className="m-t-l p-h-l p-b-l">
+                    <h2 className="font-l">{props.name}</h2>
+                    <p className="m-t-xs font-s grey-1">{props.description}</p>
+                    <div className="m-t-xxl row align-flex-end justify-space-between">
+                        <p className="font-xs grey-2 col-8">
                             {props.tags.map((tag, index) => (
                                 <React.Fragment key={index}>
                                     {tag}
@@ -76,13 +74,14 @@ const projectCard: React.FC<ProjectCardProps> = (props: ProjectCardProps) => {
                             ))}
                         </p>
                         {props.link &&
+                            <div className="col-4 row justify-flex-end">
                                 <Link className="btn" to={props.link}>
                                     vist
                                 </Link>
+                            </div>
                         }
                     </div>
                 </div>
-            </div>
         </ProjectCard>
     );
 }
@@ -95,11 +94,7 @@ const FirstProjects = (props: FirstProjectsProps) => {
         <ParallaxBG>
             <BackgroundHeading className="text-center font-xl p-v-s m-t-xxl">My Projects</BackgroundHeading>
             <ProjectContainer>
-                    {
-                        props.projects.map((project: ProjectCardProps) => {
-                            return projectCard(project);
-                        })
-                    }
+                {props.projects.map( (project: ProjectCardProps) => projectCard(project) )}
             </ProjectContainer>
         </ParallaxBG>
         

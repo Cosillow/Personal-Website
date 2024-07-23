@@ -37,7 +37,7 @@ const HomePage = () => {
       <div className="row">
         <InfoHeader className="col-6">
           <div className="wrapper">
-            <h1 className="font-xl">Connor Silloway</h1>
+            <h1 className="font-xxl">Connor Silloway</h1>
             <p className="font-m grey-1">ITWS and CS dual major</p>
             <Link className="btn outline m-t-xxl" to="/projects">
                 See Projects
