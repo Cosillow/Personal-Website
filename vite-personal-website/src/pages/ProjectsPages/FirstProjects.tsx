@@ -63,10 +63,10 @@ const projectCard: React.FC<ProjectCardProps> = (props: ProjectCardProps) => {
         <ProjectCard key={props.name} className="bg-secondary">
             <SingleCarousel images={props.images}></SingleCarousel>
             <div className="p-h-l p-v-s">
-                <h2 className="font-s">{props.name}</h2>
+                <h2 className="font-m">{props.name}</h2>
                 <div className="grey-1">
                     <p className="font-xs">{props.description}</p>
-                    <div className="m-t-xl row align-center justify-space-between">
+                    <div className="m-t-xl row align-flex-end justify-space-between">
                         <p className="font-xxs">
                             {props.tags.map((tag, index) => (
                                 <React.Fragment key={index}>

@@ -8,7 +8,7 @@ const Container: any = styled.div<{
     directionLeft: boolean
 }>`
     position: relative;
-    min-height: 300px;
+    height: ${props => props.containerWidth / (16/9) }px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -22,14 +22,18 @@ const Container: any = styled.div<{
         object-fit: contain;
         object-position: cover;
 
+        transform: translateX(0);
+        opacity: 1;
         transition: ${SINGLE_CAROUSEL_TRANSITION_TIME}s ease-in-out;
 
         &.right {
             transform: translateX(${props => props.containerWidth}px);
+            opacity: 0;
             ${props => props.directionLeft && "transition: none;"}
         }
         &.left {
             transform: translateX(-${props => props.containerWidth}px);
+            opacity: 0;
             ${props => !props.directionLeft && "transition: none;"}
         }
     }
