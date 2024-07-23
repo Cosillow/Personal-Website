@@ -29,10 +29,10 @@ const projects: any[] = [
         "images": ["iit-labs.png", "old-portfolio.gif"]
     },
     {
-        "name": "Troy Waterfront Farmers Market Musician System",
+        "name": "Troy Farmers Market Musician System",
         "tags": ["Angular", "Bootstrap"],
         "description": "custom musician booking solution for non-profit org.",
-        "images": [""]
+        "images": ["twfm_login.jpg", "twfm_admin.jpg", "twfm_form.jpg"]
     },
     {
         "name": "Music Player Monopoly",
