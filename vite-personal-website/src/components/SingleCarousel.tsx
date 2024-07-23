@@ -94,8 +94,12 @@ const SingleCarousel: FunctionComponent<SingleCarouselProps> = ({ images, direct
 
             // grab img from memory right before it comes into view (good for gifs, start at the first frame)
             imgIndex.current = (imgIndex.current + 1) % (images.length);
+            const IMG_SRC = imageObjectsRef.current[imgIndex.current].src;
             newImg.src = "";
-            newImg.src = imageObjectsRef.current[imgIndex.current].src;
+            newImg.src = IMG_SRC;
+
+            const SRC_SPLIT = IMG_SRC.split('/');
+            newImg.alt = `carousel-image: ${SRC_SPLIT[SRC_SPLIT.length-1].split('.')[0].split(/[-_]/).join(" ")}`;
             
             newImg.classList.remove(START_SIDE);
             oldImg.classList.add(END_SIDE);
@@ -113,7 +117,7 @@ const SingleCarousel: FunctionComponent<SingleCarouselProps> = ({ images, direct
     return ( 
         <Container ref={containerRef} containerWidth={containerWidth} directionLeft={directionLeft}>
             <img onClick={cycle} ref={ImgRef1} alt="carousel image" />
-            <img className={directionLeft ? 'right' : 'left'} onClick={cycle} ref={ImgRef2} alt="carousel image" />
+            <img className={directionLeft ? 'right' : 'left'} onClick={cycle} ref={ImgRef2} />
         </Container>
     );
 }

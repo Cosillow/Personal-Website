@@ -1,0 +1,13 @@
+canvas-zoom.gif: 00:00:09.93
+dance_chimp_nobox.gif: 00:00:08.81
+dev_tools.gif: 00:00:26.02
+doritos.gif: 00:00:06.53
+longrope_collisions.gif: 00:00:10.99
+oldest_rope.gif: 00:00:05.00
+old_rope.gif: 00:00:05.00
+rope_attatched_smoothcam.gif: 00:00:08.80
+rope-nocol-long.gif: 00:00:06.49
+sliding_monkey.gif: 00:00:08.88
+smoothcam.gif: 00:00:09.57
+stillcam_level_editor.gif: 00:00:22.99
+stuckcam.gif: 00:00:08.01

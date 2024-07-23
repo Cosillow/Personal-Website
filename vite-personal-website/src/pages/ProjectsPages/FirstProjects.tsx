@@ -25,7 +25,7 @@ const FlexChild = styled.div`
 const projectCard: React.FC<ProjectCardProps> = (props: ProjectCardProps) => {
     return (
         <ProjectCard key={props.name} className="bg-secondary">
-            <SingleCarousel images={props.images}></SingleCarousel>
+            {props.images && <SingleCarousel images={props.images}></SingleCarousel>}
             <div className="m-t-l p-h-l p-b-l">
                 <h2 className="font-l">{props.name}</h2>
                 <p className="m-t-xs font-s grey-1">{props.description}</p>

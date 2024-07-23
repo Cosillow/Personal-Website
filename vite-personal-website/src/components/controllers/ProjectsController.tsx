@@ -5,7 +5,7 @@ export interface ProjectCardProps {
     tags: string[]
     description: string
     link: string
-    images: string[]
+    images?: string[]
 }
 
 const projects: any[] = [
@@ -13,7 +13,7 @@ const projects: any[] = [
         "name": "2D Physics Game",
         "tags": ["C++", "SDL2", "ImGui"],
         "description": "Custom engine cross-platform game with real-time developer tools",
-        "images": [""]
+        "images": ["canvas-zoom.gif", "dev_tools.gif", "longrope_collisions.gif", "doritos.gif", "dance_chimp_nobox.gif", "old_rope.gif", "oldest_rope.gif", "rope_attatched_smoothcam.gif", "rope-nocol-long.gif", "sliding_monkey.gif", "smoothcam.gif", "stillcam_level_editor.gif", "stuckcam.gif"]
     },
     {
         "name": "Personal Portfolio",
@@ -26,7 +26,6 @@ const projects: any[] = [
         "name": "Troy Waterfront Farmers Market Musician System",
         "tags": ["Angular", "Bootstrap"],
         "description": "Real-world client custom musician booking solution",
-        
         "images": [""]
     },
     {
@@ -34,7 +33,7 @@ const projects: any[] = [
         "tags": ["HTML", "CSS", "JS", "Node", "Express"],
         "description": "Spotify statistics tracker and music player",
         "link": "http://www.musicplayermonopoly.com/index.html",
-        "images": ["MPM.png"]
+        "images": ["MPM-songs.jpg", "MPM-decades.jpg", "/MPM-artists.jpg", "MPM-genre.jpg", "MPM-playlist.jpg"]
     },
     {
         "name": "Contact-Me",
