@@ -15,6 +15,7 @@ const ProjectCard = styled.article`
     display: flex;
     flex-direction: column;
     height: fit-content;
+    
 `
 
 const FlexChild = styled.div`
@@ -39,7 +40,7 @@ const projectCard: React.FC<ProjectCardProps> = (props: ProjectCardProps) => {
                     </p>
                     {props.link &&
                         <div className="col-4 row justify-flex-end">
-                            <Link className="btn" to={props.link}>
+                            <Link className="btn font-xxs" to={props.link}>
                                 vist
                             </Link>
                         </div>
@@ -51,8 +52,8 @@ const projectCard: React.FC<ProjectCardProps> = (props: ProjectCardProps) => {
 }
 
 const ParallaxBG = styled.div`
-    background-image: radial-gradient(var(--color-accent) 1.6500000000000001px, var(--color-primary ) 1.6500000000000001px);
-    background-size: 33px 33px; 
+    background-image: radial-gradient(rgba(var(--color-accent-rgb), 30%) 1.6500000000000001px, var(--color-primary ) 1.6500000000000001px);
+    background-size: 50px 50px; 
     background-attachment: fixed;
     background-position: center;
     display: flex;
