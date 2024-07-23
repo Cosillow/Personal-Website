@@ -102,14 +102,14 @@ const Header = ({ children }:
                 <nav>
                     <ul>
                         {NAV_LINKS.map((link) =>
-                            <li className="font-s" key={link.label}>
+                            <li className="font-m" key={link.label}>
                                 <Link to={link.href}>{link.label}</Link>
                             </li>
                         )}
                         {children !== undefined && <ButtonLi>{children}</ButtonLi>}
                     </ul>
                 </nav>
-                <button onClick={openModal} className="clear font-s m-r-m">
+                <button onClick={openModal} className="clear font-m m-r-m">
                     <TbPaintFilled></TbPaintFilled><IoIosSwap></IoIosSwap>
                 </button>
                 <Modal title="Theme Controller" open={open}>

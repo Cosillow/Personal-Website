@@ -52,7 +52,7 @@ const projectCard: React.FC<ProjectCardProps> = (props: ProjectCardProps) => {
 }
 
 const ParallaxBG = styled.div`
-    background-image: radial-gradient(rgba(var(--color-accent-rgb), 30%) 1.6500000000000001px, var(--color-primary ) 1.6500000000000001px);
+    background-image: radial-gradient(rgba(var(--color-accent-rgb), 50%) 1.6500000000000001px, var(--color-primary ) 1.6500000000000001px);
     background-size: 50px 50px; 
     background-attachment: fixed;
     background-position: center;

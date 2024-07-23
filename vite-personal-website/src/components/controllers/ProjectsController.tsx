@@ -13,14 +13,14 @@ const projects: any[] = [
         "name": "2D Physics Game",
         "tags": ["C++", "SDL2", "ImGui"],
         "description": "Custom engine cross-platform game with real-time developer tools",
-        "images": ["/cropped-connor-photo.png", "iit-labs.png", "old-portfolio.gif", "scratch-rockets.gif"]
+        "images": [""]
     },
     {
         "name": "Personal Portfolio",
         "tags": ["React", "Scss", "React-redux"],
         "description": "React-based custom web portfolio with design emphasis",
         "link": "/home",
-        "images": [""]
+        "images": ["iit-labs.png", "old-portfolio.gif"]
     },
     {
         "name": "Troy Waterfront Farmers Market Musician System",
