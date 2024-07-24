@@ -156,11 +156,10 @@ const SingleCarousel: FunctionComponent<SingleCarouselProps> = ({ images, direct
     return ( 
         <Container ref={containerRef} containerWidth={containerWidth} directionLeft={directionLeft}>
             {loading ? <LoadingIcon verticalCSSVar="--color-primary" horizontalCSSVar="--color-accent"></LoadingIcon> : 
-            // <>
-            //     <img ref={ImgRef1} />
-            //     <img ref={ImgRef2} className={directionLeft ? 'right' : 'left'} />
-            // </>
-            <LoadingIcon verticalCSSVar="--color-primary" horizontalCSSVar="--color-accent"></LoadingIcon>
+            <>
+                <img ref={ImgRef1} />
+                <img ref={ImgRef2} className={directionLeft ? 'right' : 'left'} />
+            </>
             }
         </Container>
     );
