@@ -55,6 +55,7 @@ const SingleCarousel: FunctionComponent<SingleCarouselProps> = ({ images, direct
     const imgIndex = useRef<number>(0);
 
     const [containerWidth, setContainerWidth] = useState<number>(0);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         imageObjectsRef.current = images.map(src => {
@@ -78,11 +79,12 @@ const SingleCarousel: FunctionComponent<SingleCarouselProps> = ({ images, direct
                 const JITTER = Math.floor(Math.random() * (MAX - MIN + 1)) + MIN;
                 return defaultDuration + JITTER;
             }
-        }); console.log(imageDurationsRef.current)
+        });
 
-        if (ImgRef1.current) {
-            ImgRef1.current.src = imageObjectsRef.current[imgIndex.current].src;
-        }
+        Promise.all(imageObjectsRef.current.map((img) => new Promise((resolve) => {
+            img.onload = () => setTimeout(resolve, 3000);
+            img.onerror = () => setTimeout(resolve, 3000);
+        }))).then(() => setLoading(false));
         
         const HandleResize = ()=> {
             if (!containerRef.current) return;
@@ -91,12 +93,20 @@ const SingleCarousel: FunctionComponent<SingleCarouselProps> = ({ images, direct
         
         HandleResize();
         window.addEventListener('resize', HandleResize);
-        StartCycle();
 
         return () => {
             window.removeEventListener('resize', HandleResize);
         };
     }, [images]);
+
+    useEffect(() => {
+        if (loading) return;
+        
+        if (ImgRef1.current) {
+            ImgRef1.current.src = imageObjectsRef.current[imgIndex.current].src;
+        }
+        StartCycle();
+    }, [loading]);
 
     const StartCycle = ()=> { 
         const timeout = setTimeout(() => {
@@ -144,8 +154,10 @@ const SingleCarousel: FunctionComponent<SingleCarouselProps> = ({ images, direct
 
     return ( 
         <Container ref={containerRef} containerWidth={containerWidth} directionLeft={directionLeft}>
-            <img ref={ImgRef1} />
-            <img ref={ImgRef2} className={directionLeft ? 'right' : 'left'} />
+            {loading ? <p>...</p> : <>
+                <img ref={ImgRef1} />
+                <img ref={ImgRef2} className={directionLeft ? 'right' : 'left'} />
+            </>}
         </Container>
     );
 }
