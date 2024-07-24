@@ -1,6 +1,7 @@
 import { FunctionComponent, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { ImageGifs } from "./controllers/ProjectsController";
+import LoadingIcon from "./LoadingIcon";
 
 const SINGLE_CAROUSEL_TRANSITION_TIME = 1;
 
@@ -154,10 +155,13 @@ const SingleCarousel: FunctionComponent<SingleCarouselProps> = ({ images, direct
 
     return ( 
         <Container ref={containerRef} containerWidth={containerWidth} directionLeft={directionLeft}>
-            {loading ? <p>loading...</p> : <>
-                <img ref={ImgRef1} />
-                <img ref={ImgRef2} className={directionLeft ? 'right' : 'left'} />
-            </>}
+            {loading ? <LoadingIcon verticalCSSVar="--color-primary" horizontalCSSVar="--color-accent"></LoadingIcon> : 
+            // <>
+            //     <img ref={ImgRef1} />
+            //     <img ref={ImgRef2} className={directionLeft ? 'right' : 'left'} />
+            // </>
+            <LoadingIcon verticalCSSVar="--color-primary" horizontalCSSVar="--color-accent"></LoadingIcon>
+            }
         </Container>
     );
 }
