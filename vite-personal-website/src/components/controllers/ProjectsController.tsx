@@ -53,7 +53,7 @@ const projects: any[] = [
         "tags": ["HTML", "CSS", "JS"],
         "description": "wedding videography and photography portfolio for New England artist",
         "link": "https://nes-media.netlify.app/",
-        "images": ["NES-media.png"]
+        "images": ["NES_home.jpg", "NES_wedding.jpg", "NES_photo.jpg"]
     }
 ];
 

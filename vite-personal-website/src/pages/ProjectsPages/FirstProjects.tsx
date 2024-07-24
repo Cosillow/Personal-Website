@@ -28,7 +28,7 @@ const projectCard: React.FC<ProjectCardProps> = (props: ProjectCardProps) => {
             {props.images && <SingleCarousel images={props.images}></SingleCarousel>}
             <div className="m-t-l p-h-l p-b-l">
                 <h2 className="font-l">{props.name}</h2>
-                <p className="m-t-xs font-s grey-1">{props.description}</p>
+                <p className="m-t-xxs font-s grey-1">{props.description}</p>
                 <div className="m-t-xxl row align-flex-end justify-space-between">
                     <p className="font-xs grey-2 col-8">
                         {props.tags.map((tag, index) => (
@@ -40,7 +40,7 @@ const projectCard: React.FC<ProjectCardProps> = (props: ProjectCardProps) => {
                     </p>
                     <div className="col-4 row justify-flex-end">
                         {props.link &&
-                            <Link className="btn font-xxs" to={props.link}>
+                            <Link target="_blank" className="btn font-xxs" to={props.link}>
                                 vist
                             </Link>
                         }
