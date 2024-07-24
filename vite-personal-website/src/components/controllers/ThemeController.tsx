@@ -39,13 +39,21 @@ const ThemeController = () => {
     const stateTheme: ColorScheme = useTheme();
     const dispatch = useDispatch();
 
-    useEffect(()=>{
-        // only on site load/reload
-        // component exists for session lifetime
-        const ROOT_THEME = getRootColorScheme();
-        setPreviousTheme(ROOT_THEME);
-        setThemeColors(dispatch, ROOT_THEME);
-    },[]);
+    useEffect(() => {
+        const HandleLoad = () => {
+            const ROOT_THEME = getRootColorScheme();
+            setPreviousTheme(ROOT_THEME);
+            setThemeColors(dispatch, ROOT_THEME);
+        };
+    
+        if (document.readyState === 'complete') {
+            HandleLoad();
+        } else {
+            window.addEventListener('load', HandleLoad);
+            return () => window.removeEventListener('load', HandleLoad);
+        }
+    }, []);
+    
 
     const revertTheme = () => {
         setPreviousTheme(getRootColorScheme());
