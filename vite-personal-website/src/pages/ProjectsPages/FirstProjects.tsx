@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import Carousel from "../../components/ContinuousCarousel";
+import { FaGithub } from "react-icons/fa";
 import { ProjectCardProps } from "../../components/controllers/ProjectsController";
 import React from "react";
-import ContinuousCarousel from "../../components/ContinuousCarousel";
 import SingleCarousel from "../../components/SingleCarousel";
 
 const ProjectCard = styled.article`
@@ -15,11 +14,21 @@ const ProjectCard = styled.article`
     display: flex;
     flex-direction: column;
     height: fit-content;
-    
 `
 
-const FlexChild = styled.div`
-    flex-grow: 1;
+const TagsLink = styled.div`
+    display: flex;
+    align-items: flex-end;
+
+    & > *:first-child {
+        width: 75%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    & > *:last-child {
+        width: 25%;
+    }
 `
 
 const projectCard: React.FC<ProjectCardProps> = (props: ProjectCardProps) => {
@@ -29,24 +38,24 @@ const projectCard: React.FC<ProjectCardProps> = (props: ProjectCardProps) => {
             <div className="m-t-s p-h-l p-b-l">
                 <h2 className="font-l">{props.name}</h2>
                 <p className="m-t-xxs font-s grey-1">{props.description}</p>
-                <div className="m-t-xxl row align-flex-end justify-space-between">
-                    <p className="font-xs grey-2 col-8">
+                <TagsLink className="m-t-xxl">
+                    <p className="font-xs grey-2">
                         {props.tags.map((tag, index) => (
                             <React.Fragment key={index}>
-                                {tag}
-                                {index < props.tags.length - 1 && <span className="m-h-s">|</span>}
+                                <span className="m-r-s">{tag}</span>
+                                {index < props.tags.length - 1 && <span className="m-r-s">|</span>}
                             </React.Fragment>
                         ))}
                     </p>
-                    <div className="col-4 row justify-flex-end">
+                    <div className="row justify-flex-end">
                         {props.link &&
                             <Link target="_blank" className="btn font-xxs" to={props.link}>
-                                vist
+                                <FaGithub className="m-r-s"></FaGithub> visit
                             </Link>
                         }
                     </div>
                     
-                </div>
+                </TagsLink>
             </div>
         </ProjectCard>
     );
