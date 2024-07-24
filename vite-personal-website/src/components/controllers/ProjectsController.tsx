@@ -41,14 +41,14 @@ const projects: any[] = [
         name: "Music Player Monopoly",
         tags: ["HTML", "CSS", "JS", "Node", "Express"],
         description: "statistics tracker and music player for Spotify",
-        link: "http://www.musicplayermonopoly.com/index.html",
+        link: "https://github.com/Cosillow/Music-Player-Monopoly",
         images: ["MPM-songs.jpg", "MPM-decades.jpg", "/MPM-artists.jpg", "MPM-genre.jpg", "MPM-playlist.jpg"]
     },
     {
         name: "Contact-Me",
         tags: ["HTML", "CSS", "JS", "PHP", "MySQL"],
         description: "social media business card platform for securing relationships at networking events",
-        link: "https://github.com/Group-2-F21-Web-Systems-Development/contact-me",
+        link: "https://github.com/Cosillow/contact-me",
         // images: []
     },
     {
