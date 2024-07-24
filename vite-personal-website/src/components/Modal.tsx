@@ -25,7 +25,7 @@ const DialogModal: any = styled.dialog`
   box-shadow: 0 0 #0000, 0 0 #0000, 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   padding: 0;
 
-  position: fixed;
+  position: sticky;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -38,8 +38,10 @@ const DialogModal: any = styled.dialog`
 const DialogContainer: any = styled.div`
   // this exists to allow clicking the background of the dialog to close
   width: 100%;
-  height: 100%;
-  padding: 3rem;
+  /* height: 100%; */
+  height: fit-content;
+  max-height: 100vh;
+  /* min-height: 30vh; */
 `
 
 const Modal: React.FC<{
@@ -49,8 +51,6 @@ const Modal: React.FC<{
   scrollDisabled?: boolean
 }> = ({ title, children, open, scrollDisabled=false }) => {
   const dialogRef = useRef<HTMLDialogElement | null>();
-  let topScroll: number = 0;
-  let leftScroll: number = 0;
 
   useEffect(() => {
     if (!dialogRef || !open) {
@@ -58,11 +58,6 @@ const Modal: React.FC<{
       enableScroll();
       return;
     }
-
-    // modal is opening
-    topScroll = window.scrollY || document.documentElement.scrollTop;
-    leftScroll = window.scrollX || document.documentElement.scrollLeft;
-
     
     dialogRef.current?.showModal()
     disableScroll();
@@ -92,7 +87,6 @@ const Modal: React.FC<{
   }
 
   const dialogContainerClicked = (event: React.MouseEvent) => {
-    // prevent dialogClicked --> closeModal()
     event.stopPropagation()
   }
 
@@ -100,7 +94,7 @@ const Modal: React.FC<{
     <>
       {createPortal(
         <DialogModal ref={dialogRef} onCancel={ closeModal } onClick={ dialogClicked } >
-            <DialogContainer onClick={ dialogContainerClicked }>
+            <DialogContainer className="p-xxl" onClick={ dialogContainerClicked }>
               <button className="font-l clear close-modal" onClick={ closeModal } >
                 <BiX></BiX>
               </button>
