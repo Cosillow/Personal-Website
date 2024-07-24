@@ -30,16 +30,16 @@ const DialogModal: any = styled.dialog`
   top: 50%;
   transform: translate(-50%, -50%);
   z-index: 999999;
-
-  /* width: fit-content;
-  height: fit-content; */
 `;
 
 const DialogContainer: any = styled.div`
   // this exists to allow clicking the background of the dialog to close
+  // CAREFUL ADJUSTING VV
+  // one of these properties fixes height on mobile collapsing 
   width: 100%;
   height: fit-content;
   max-height: 100vh;
+  // CAREFUL ADJUSTING ^^
 `
 
 const Modal: React.FC<{
