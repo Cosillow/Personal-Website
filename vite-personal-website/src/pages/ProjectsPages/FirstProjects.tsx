@@ -102,6 +102,10 @@ const ProjectContainer = styled.div`
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 10px;
     align-items: center;
+
+    @media (max-width: 600px) {
+        grid-template-columns: repeat(1, minmax(250px, 1fr));
+    }
 `
 
 type FirstProjectsProps = {
