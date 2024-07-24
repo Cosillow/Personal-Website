@@ -30,6 +30,9 @@ const DialogModal: any = styled.dialog`
   top: 50%;
   transform: translate(-50%, -50%);
   z-index: 999999;
+
+  width: fit-content;
+  height: fit-content;
 `;
 
 const DialogContainer: any = styled.div`
