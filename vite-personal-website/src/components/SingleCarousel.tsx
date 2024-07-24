@@ -82,8 +82,8 @@ const SingleCarousel: FunctionComponent<SingleCarouselProps> = ({ images, direct
         });
 
         Promise.all(imageObjectsRef.current.map((img) => new Promise((resolve) => {
-            img.onload = () => setTimeout(resolve, 3000);
-            img.onerror = () => setTimeout(resolve, 3000);
+            img.onload = resolve;
+            img.onerror = resolve;
         }))).then(() => setLoading(false));
         
         const HandleResize = ()=> {
@@ -154,7 +154,7 @@ const SingleCarousel: FunctionComponent<SingleCarouselProps> = ({ images, direct
 
     return ( 
         <Container ref={containerRef} containerWidth={containerWidth} directionLeft={directionLeft}>
-            {loading ? <p>...</p> : <>
+            {loading ? <p>loading...</p> : <>
                 <img ref={ImgRef1} />
                 <img ref={ImgRef2} className={directionLeft ? 'right' : 'left'} />
             </>}
