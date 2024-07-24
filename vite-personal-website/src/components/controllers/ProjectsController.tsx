@@ -5,15 +5,17 @@ export interface ProjectCardProps {
     tags: string[]
     description: string
     link: string
-    images?: string[]
+    images?: ImageGifs
 }
+
+export type ImageGifs = (string | {image: string, duration: number})[];
 
 const projects: any[] = [
     {
         "name": "2D Physics Game",
         "tags": ["C++", "SDL2", "ImGui"],
         "description": "custom engine cross-platform game with real-time developer tools",
-        "images": ["canvas-zoom.gif", "dev_tools.gif", "longrope_collisions.gif", "doritos.gif", "dance_chimp_nobox.gif", "old_rope.gif", "oldest_rope.gif", "rope_attatched_smoothcam.gif", "rope-nocol-long.gif", "sliding_monkey.gif", "smoothcam.gif", "stillcam_level_editor.gif", "stuckcam.gif"]
+        "images": [{image: "doritos.gif", duration: 6.53}, {image: "sliding_monkey.gif", duration: 8.88}, {image: "oldest_rope.gif", duration: 5}, {image: "old_rope.gif", duration: 5}, {image: "canvas-zoom.gif", duration: 9.93}, {image: "dance_chimp_nobox.gif", duration: 8.81}, {image: "stillcam_level_editor.gif", duration: 22.99}, {image: "dev_tools.gif", duration: 26.02}, {image: "stuckcam.gif", duration: 8.01}, {image: "smoothcam.gif", duration: 9.57}, {image: "rope_attatched_smoothcam.gif", duration: 8.8}, {image: "rope-nocol-long.gif", duration: 6.49}, {image: "longrope_collisions.gif", duration: 10.99}]
     },
     {
         "name": "Remote Logging and Monitoring System",
@@ -26,7 +28,7 @@ const projects: any[] = [
         "tags": ["React", "Scss", "Styled-components", "React-redux"],
         "description": "react-based custom web portfolio with design emphasis",
         "link": "/home",
-        "images": ["iit-labs.png", "old-portfolio.gif"]
+        "images": ["iit-labs.png", {image: "old-portfolio.gif", duration: 23.8}]
     },
     {
         "name": "Troy Farmers Market Musician System",
@@ -46,7 +48,7 @@ const projects: any[] = [
         "tags": ["HTML", "CSS", "JS", "PHP", "MySQL"],
         "description": "social media business card platform for securing relationships at networking events",
         "link": "https://github.com/Group-2-F21-Web-Systems-Development/contact-me",
-        "images": ["contact-me.png"]
+        // "images": []
     },
     {
         "name": "NES-media Portfolio",

@@ -1,5 +1,6 @@
 import { FunctionComponent, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
+import { ImageGifs } from "./controllers/ProjectsController";
 
 const SINGLE_CAROUSEL_TRANSITION_TIME = 1;
 
@@ -40,44 +41,71 @@ const Container: any = styled.div<{
 `
 
 interface SingleCarouselProps {
-    images: string[],
-    directionLeft?: boolean
+    images: ImageGifs,
+    directionLeft?: boolean,
+    defaultDuration?: number
 }
  
-const SingleCarousel: FunctionComponent<SingleCarouselProps> = ({ images, directionLeft = true }) => {
+const SingleCarousel: FunctionComponent<SingleCarouselProps> = ({ images, directionLeft = true, defaultDuration = (10 + SINGLE_CAROUSEL_TRANSITION_TIME) }) => {
     const containerRef = useRef<HTMLDivElement | null>(null);
     const ImgRef1 = useRef<HTMLImageElement | null>(null);
     const ImgRef2 = useRef<HTMLImageElement | null>(null);
     const imageObjectsRef = useRef<HTMLImageElement[]>([]);
+    const imageDurationsRef = useRef<number[]>([]);
     const imgIndex = useRef<number>(0);
 
     const [containerWidth, setContainerWidth] = useState<number>(0);
 
     useEffect(() => {
-        // Preload images and store the Image objects
         imageObjectsRef.current = images.map(src => {
-            const IMG = new Image();
-            IMG.src = src;
-            return IMG;
+            // Preload images and store the Image objects
+            let img = new Image();
+            
+            if (typeof(src) === 'string') {
+                img.src = src;
+            } else {
+                img.src = src.image;
+            }
+            return img;
         });
+
+        imageDurationsRef.current = images.map(src => {           
+            if (typeof(src) !== 'string') {
+                return src.duration;
+            } else {
+                const MAX = SINGLE_CAROUSEL_TRANSITION_TIME;
+                const MIN = MAX * (-1)
+                const JITTER = Math.floor(Math.random() * (MAX - MIN + 1)) + MIN;
+                return defaultDuration + JITTER;
+            }
+        }); console.log(imageDurationsRef.current)
 
         if (ImgRef1.current) {
             ImgRef1.current.src = imageObjectsRef.current[imgIndex.current].src;
         }
         
-        const handleResize = ()=> {
+        const HandleResize = ()=> {
             if (!containerRef.current) return;
             setContainerWidth(containerRef.current.clientWidth);
         }
-        handleResize();
+        
+        HandleResize();
+        window.addEventListener('resize', HandleResize);
+        StartCycle();
 
-        window.addEventListener('resize', handleResize);
         return () => {
-            window.removeEventListener('resize', handleResize);
+            window.removeEventListener('resize', HandleResize);
         };
     }, [images]);
 
-    const cycle = ()=> {
+    const StartCycle = ()=> { 
+        const timeout = setTimeout(() => {
+            CycleCarousel();
+            StartCycle();
+        }, (imageDurationsRef.current[imgIndex.current] - SINGLE_CAROUSEL_TRANSITION_TIME)* 1000);
+    }
+
+    const CycleCarousel = ()=> {
         if (!ImgRef1.current || !ImgRef2.current) return;
 
         const START_SIDE = directionLeft ? "right" : "left";
@@ -92,7 +120,7 @@ const SingleCarousel: FunctionComponent<SingleCarouselProps> = ({ images, direct
         const rotateNewImg = (newImg: HTMLImageElement|null, oldImg: HTMLImageElement|null)=> {
             if (!newImg || !oldImg) return;
 
-            // grab img from memory right before it comes into view (good for gifs, start at the first frame)
+            // grab img from memory right before it comes into view (good for gifs; start at the first frame)
             imgIndex.current = (imgIndex.current + 1) % (images.length);
             const IMG_SRC = imageObjectsRef.current[imgIndex.current].src;
             newImg.src = "";
@@ -116,8 +144,8 @@ const SingleCarousel: FunctionComponent<SingleCarouselProps> = ({ images, direct
 
     return ( 
         <Container ref={containerRef} containerWidth={containerWidth} directionLeft={directionLeft}>
-            <img onClick={cycle} ref={ImgRef1} alt="carousel image" />
-            <img className={directionLeft ? 'right' : 'left'} onClick={cycle} ref={ImgRef2} />
+            <img ref={ImgRef1} />
+            <img ref={ImgRef2} className={directionLeft ? 'right' : 'left'} />
         </Container>
     );
 }
