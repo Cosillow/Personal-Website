@@ -39,7 +39,7 @@ const HSLPicker = ({ currentColor, returnSelectedColor }: Picker) => {
     const l: number = type === "l" ? val : currentColor.hsl.l;
     const newColor = new Color(`hsl(${h}, ${s}%, ${l}%)`);
     returnSelectedColor(newColor);
-  };
+};
 
   return (
     <>

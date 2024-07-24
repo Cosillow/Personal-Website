@@ -1,10 +1,62 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import Carousel from "../../components/ContinuousCarousel";
+import { ProjectCardProps } from "../../components/controllers/ProjectsController";
+import React from "react";
+import ContinuousCarousel from "../../components/ContinuousCarousel";
+import SingleCarousel from "../../components/SingleCarousel";
+
+const ProjectCard = styled.article`
+    border-radius: 10px;
+    position: relative;
+    grid-column: span 1;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    
+`
+
+const FlexChild = styled.div`
+    flex-grow: 1;
+`
+
+const projectCard: React.FC<ProjectCardProps> = (props: ProjectCardProps) => {
+    return (
+        <ProjectCard key={props.name} className="bg-secondary">
+            {props.images && <SingleCarousel images={props.images}></SingleCarousel>}
+            <div className="m-t-s p-h-l p-b-l">
+                <h2 className="font-l">{props.name}</h2>
+                <p className="m-t-xxs font-s grey-1">{props.description}</p>
+                <div className="m-t-xxl row align-flex-end justify-space-between">
+                    <p className="font-xs grey-2 col-8">
+                        {props.tags.map((tag, index) => (
+                            <React.Fragment key={index}>
+                                {tag}
+                                {index < props.tags.length - 1 && <span className="m-h-s">|</span>}
+                            </React.Fragment>
+                        ))}
+                    </p>
+                    <div className="col-4 row justify-flex-end">
+                        {props.link &&
+                            <Link target="_blank" className="btn font-xxs" to={props.link}>
+                                vist
+                            </Link>
+                        }
+                    </div>
+                    
+                </div>
+            </div>
+        </ProjectCard>
+    );
+}
 
 const ParallaxBG = styled.div`
-    background-image: radial-gradient(var(--color-accent) 1.6500000000000001px, var(--color-primary ) 1.6500000000000001px);
-    background-size: 33px 33px;    
+    background-image: radial-gradient(rgba(var(--color-accent-rgb), 50%) 1.6500000000000001px, var(--color-primary ) 1.6500000000000001px);
+    background-size: 50px 50px; 
     background-attachment: fixed;
+    background-position: center;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -21,50 +73,27 @@ const BackgroundHeading = styled.h1`
     &::before {
         content: '';
         background: var(--color-primary);
+        /* background: red; */
         display: block;
         width: 120%;
-        height: 60%;
+        height: 100%;
         position: absolute;
         left: -10%;
-        top: 20%;
+        top: -0%;
         z-index: -1;
         border-radius: 50px;
     }
 `;
 
-interface ProjectCardProps {
-    name: string
-    tags: string[]
-    description: string
-    link: string
-    thumbnail: string
-    image: string
-}
-
-const ProjectCard = styled.article`
-    padding: 3em;
-    border-radius: 50px;
-    margin-bottom: 4em;
-    position: relative;
+const ProjectContainer = styled.div`
+    padding: clamp(5px, 5px + 3vw, 100px);
+    padding-top: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 10px;
+    align-items: center;
 `
-
-
-const projectCard: React.FC<ProjectCardProps> = (props: ProjectCardProps) => {
-    return (
-        <ProjectCard key={props.name} className="bg-secondary">
-            <h2 className="font-md">{props.name}</h2>
-            <p className="font-xs">{props.description}</p>
-            <h3 className="font-sm m-v-sm m-l-sm">Technologies:</h3>
-            <ul className="styled font-sm">
-                {props.tags.map((tag: string, index: number) =>
-                    <li key={index}>{tag}</li>
-                )}
-            </ul>
-            {props.link && <div className="row justify-flex-end"><Link className="m-t-lg m-r-xl" to={props.link}><button className="m-sm">vist</button></Link></div>}
-        </ProjectCard>
-    );
-}
-
 
 type FirstProjectsProps = {
     projects: any
@@ -72,14 +101,10 @@ type FirstProjectsProps = {
 const FirstProjects = (props: FirstProjectsProps) => {
     return (
         <ParallaxBG>
-            <BackgroundHeading className="text-center font-xl p-v-sm">My Projects</BackgroundHeading>
-            <div className="container">
-                    {
-                        props.projects.map((project: ProjectCardProps) => {
-                            return projectCard(project);
-                        })
-                    }
-            </div>
+            <BackgroundHeading className="text-center font-xl p-v-xl">My Projects</BackgroundHeading>
+            <ProjectContainer>
+                {props.projects.map( (project: ProjectCardProps) => projectCard(project) )}
+            </ProjectContainer>
         </ParallaxBG>
         
     );

@@ -35,7 +35,7 @@ const DisplayColorDiv = styled.div<{
 const ThemeController = () => {
 
     const [selectedProperty, setSelectedProperty] = useState<string>('primary');
-    const [previousTheme, setPreviousTheme] = useState<ColorScheme>();    
+    const [previousTheme, setPreviousTheme] = useState<ColorScheme>();
     const stateTheme: ColorScheme = useTheme();
     const dispatch = useDispatch();
 
@@ -96,23 +96,25 @@ const ThemeController = () => {
 
     return (
         <>
-            <div className="row justify-space-between">
-                <select className="m-v-md" onChange={userSelectedProperty} value={selectedProperty} name="proprtySelection">
+            <div className="row justify-center m-b-m">
+                <select onChange={userSelectedProperty} value={selectedProperty} name="proprtySelection">
                     {
                         THEME_VARIABLES.map((color: string) => (
                             <option key={color} value={color}>{color}</option>
                         ))
                     }
                 </select>
-                <button onClick={copyStyling} className="clear font-md">
-                    <IoCopyOutline></IoCopyOutline>
-                </button>
             </div>
 
             {/* <DisplayColorDiv background={stateTheme[selectedProperty as keyof ColorScheme].toList()}></DisplayColorDiv> */}
             <ColorPicker currentColor={stateTheme[selectedProperty as keyof ColorScheme]} returnSelectedColor={userPickedColor}></ColorPicker>
             {/* <HexPicker currentColor={stateTheme[selectedProperty as keyof ColorScheme]} returnSelectedColor={userPickedColor}></HexPicker> */}
-            {previousTheme && <button className="clear m-t-sm font-lg" onClick={ revertTheme }><IoIosSwap></IoIosSwap></button>}
+            <div className="row justify-center m-t-xl">
+                {previousTheme && <button className="clear font-l m-r-s" onClick={ revertTheme }><IoIosSwap></IoIosSwap></button>}
+                <button onClick={copyStyling} className="clear font-m">
+                    <IoCopyOutline></IoCopyOutline>
+                </button>
+            </div>
         </>
     );
 }

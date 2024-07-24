@@ -6,7 +6,6 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  background: inherit;
   color: inherit;
   font: inherit;
   margin: 0;
@@ -41,10 +40,11 @@ a.styled {
 
 button, .btn {
   width: fit-content;
+  height: fit-content;
   text-align: center;
-  font-size: 1rem;
-  font-weight: 900;
-  padding: 1em 2em;
+  font-size: 1em;
+  font-weight: 700;
+  padding: .5em 1em;
   cursor: pointer;
   
   // border: 2px solid var(--color-accent-contrast);
@@ -52,7 +52,7 @@ button, .btn {
 
   background: var(--color-accent);
   color: var(--color-accent-contrast);
-  border-radius: var(--border-md);
+  border-radius: var(--border-m);
   transition: all 80ms ease-in;
 
   // svg's aren't centered vertically
@@ -83,13 +83,20 @@ button.clear:hover, button.clear:active, .btn.clear:hover, .btn.clear:active {
 }
 
 input, select {
-  border-radius: 5px;
-  border-color: var(--color-accent);
+  // border-radius: 5px;
+  // border-color: var(--color-accent);
+  // background: inherit;
+  color: black;
 }
 
-select {
-  padding: .5rem;
-}
+// select {
+//   padding: .5rem;
+// }
+
+// option {
+//   background: inherit !important;
+//   color: inherit !important;
+// }
 
 hr {
   border: 0;

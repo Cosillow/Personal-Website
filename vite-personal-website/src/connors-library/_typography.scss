@@ -6,10 +6,8 @@
 
   h#{$i} {
     font-size: var(--font-#{$size});
+    font-weight: 500;
   }
-}
-h6 {
-  font-size: var(--font-xs);
 }
 
 .text-center {
@@ -18,4 +16,16 @@ h6 {
 
 .text-end {
   text-align: end;
+}
+
+.grey-1 {
+  opacity: 50%;
+}
+
+.grey-2 {
+  opacity: 40%;
+}
+
+.grey-3 {
+  opacity: 20%;
 }

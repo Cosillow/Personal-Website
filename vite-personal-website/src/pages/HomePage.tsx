@@ -30,11 +30,6 @@ const BackgroundImage = styled.div<BackgroundImageProps>`
   border-bottom: 15px solid var(--color-accent);
 `;
 
-
-const Subheading = styled.p`
-  color: grey;
-`
-
 const HomePage = () => {
   return (
     <>
@@ -42,9 +37,9 @@ const HomePage = () => {
       <div className="row">
         <InfoHeader className="col-6">
           <div className="wrapper">
-            <h1 className="font-xl">Connor Silloway</h1>
-            <Subheading className="font-md m-b-sm">ITWS and CS dual major</Subheading>
-            <Link className="btn outline" to="/projects">
+            <h1 className="font-xxl">Connor Silloway</h1>
+            <p className="font-m grey-1">ITWS and CS dual major</p>
+            <Link className="btn outline m-t-xxl" to="/projects">
                 See Projects
             </Link>
           </div>

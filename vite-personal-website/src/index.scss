@@ -1,33 +1,39 @@
 :root {
-    --color-primary: rgb(17,90,61);
+    --color-primary: rgb(22,22,24);
     --color-primary-contrast: rgb(255,255,255);
-    --color-primary-rgb: 17,90,61;
-    --color-secondary: rgb(199,226,250);
-    --color-secondary-contrast: rgb(0,0,0);
-    --color-secondary-rgb: 199,226,250;
-    --color-accent: rgb(139,97,255);
+    --color-primary-rgb: 22,22,24;
+    --color-secondary: rgb(25,29,36);
+    --color-secondary-contrast: rgb(255,255,255);
+    --color-secondary-rgb: 25,29,36;
+    --color-accent: rgb(88,123,218);
     --color-accent-contrast: rgb(255,255,255);
-    --color-accent-rgb: 139,97,255;
+    --color-accent-rgb: 88,123,218;
 
-    --font-xs: clamp(0.8rem, 1rem + 2vw, 1.2rem);
-    --font-sm: clamp(1rem, 1rem + 2vw, 1.4rem);
-    --font-md: clamp(1.2rem, 1rem + 2vw, 1.6rem);
-    --font-lg: clamp(1.4rem, 1rem + 2vw, 1.8rem);
-    --font-xl: clamp(2.6rem, 1rem + 2vw, 3rem);
+    --font-xxs: clamp(0.5rem, 0.5rem + 1vw, 0.75rem);
+    --font-xs: clamp(0.75rem, 0.75rem + 1vw, 1rem);
+    --font-s: clamp(1rem, 1rem + 1vw, 1.25rem);
+    --font-m: clamp(1.25rem, 1.25rem + 1vw, 1.5rem);
+    --font-l: clamp(1.5rem, 1.5rem + 1vw, 2rem);
+    --font-xl: clamp(2rem, 2rem + 1vw, 3rem);
+    --font-xxl: clamp(3rem, 3rem + 1vw, 4rem);
 
-    --margin-xs: .5em;
-    --margin-sm: 1em;
-    --margin-md: 2em;
-    --margin-lg: 3em;
-    --margin-xl: 5em;
+    --margin-xxs: .25rem;
+    --margin-xs: .5rem;
+    --margin-s: .75rem;
+    --margin-m: 1rem;
+    --margin-l: 1.25rem;
+    --margin-xl: 1.75rem;
+    --margin-xxl: 2.5rem;
 
-    --padding-xs: .5em;
-    --padding-sm: 1em;
-    --padding-md: 2em;
-    --padding-lg: 3em;
-    --padding-xl: 5em;
+    --padding-xxs: .25rem
+    --padding-xs: .5rem;
+    --padding-s: .75rem;
+    --padding-m: 1rem;
+    --padding-l: 1.25rem;
+    --padding-xl: 1.75rem;
+    --padding-xxl: 2.5rem;
 
-    --border-sm: .16em;
-    --border-md: .5em;
-    --border-lg: .8em;;
+    --border-s: .16em;
+    --border-m: .5em;
+    --border-l: .8em;;
 }
