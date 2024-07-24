@@ -11,9 +11,9 @@ const DialogModal: any = styled.dialog`
   }
 
   &::backdrop {
-    opacity: 0.3;
-    background-size: 90px 90px;
-    background-image: repeating-linear-gradient(45deg, #000000 0, #000000 2.8000000000000003px, transparent 0, transparent 50%);
+    opacity: 0.1;
+    background-size: 200px 200px;
+    background-image: repeating-linear-gradient(45deg, var(--color-primary-contrast) 0, var(--color-primary-contrast) 2.8000000000000003px, transparent 0, transparent 50%);
   }
 
   background-color: var(--color-secondary);
@@ -25,23 +25,21 @@ const DialogModal: any = styled.dialog`
   box-shadow: 0 0 #0000, 0 0 #0000, 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   padding: 0;
 
-  position: sticky;
+  position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   z-index: 999999;
 
-  width: fit-content;
-  height: fit-content;
+  /* width: fit-content;
+  height: fit-content; */
 `;
 
 const DialogContainer: any = styled.div`
   // this exists to allow clicking the background of the dialog to close
   width: 100%;
-  /* height: 100%; */
   height: fit-content;
   max-height: 100vh;
-  /* min-height: 30vh; */
 `
 
 const Modal: React.FC<{
