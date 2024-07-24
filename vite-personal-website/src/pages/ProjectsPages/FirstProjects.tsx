@@ -26,7 +26,7 @@ const projectCard: React.FC<ProjectCardProps> = (props: ProjectCardProps) => {
     return (
         <ProjectCard key={props.name} className="bg-secondary">
             {props.images && <SingleCarousel images={props.images}></SingleCarousel>}
-            <div className="m-t-l p-h-l p-b-l">
+            <div className="m-t-s p-h-l p-b-l">
                 <h2 className="font-l">{props.name}</h2>
                 <p className="m-t-xxs font-s grey-1">{props.description}</p>
                 <div className="m-t-xxl row align-flex-end justify-space-between">
@@ -73,12 +73,13 @@ const BackgroundHeading = styled.h1`
     &::before {
         content: '';
         background: var(--color-primary);
+        /* background: red; */
         display: block;
-        width: 140%;
-        height: 120%;
+        width: 120%;
+        height: 100%;
         position: absolute;
-        left: -20%;
-        top: -10%;
+        left: -10%;
+        top: -0%;
         z-index: -1;
         border-radius: 50px;
     }
@@ -86,6 +87,7 @@ const BackgroundHeading = styled.h1`
 
 const ProjectContainer = styled.div`
     padding: clamp(5px, 5px + 3vw, 100px);
+    padding-top: 0;
     width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -99,7 +101,7 @@ type FirstProjectsProps = {
 const FirstProjects = (props: FirstProjectsProps) => {
     return (
         <ParallaxBG>
-            <BackgroundHeading className="text-center font-xl p-v-s m-t-xxl">My Projects</BackgroundHeading>
+            <BackgroundHeading className="text-center font-xl p-v-xl">My Projects</BackgroundHeading>
             <ProjectContainer>
                 {props.projects.map( (project: ProjectCardProps) => projectCard(project) )}
             </ProjectContainer>
