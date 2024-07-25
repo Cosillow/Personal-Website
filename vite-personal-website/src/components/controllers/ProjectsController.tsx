@@ -12,17 +12,17 @@ export type ImageGifs = (string | {image: string, duration: number})[];
 
 const projects: any[] = [
     {
+        name: "Remote Logging and Monitoring System",
+        tags: ["Angular", "Bootstrap", "Firebase", "gRPC"],
+        description: "custom library for transdisciplinary artist collective",
+        images: ["masary_home.jpg", "masary_dashboard.jpg", "masary_dashboard_detail.jpg"]
+    },
+    {
         name: "2D Physics Game",
         tags: ["C++", "SDL2", "ImGui"],
         description: "custom engine cross-platform game with real-time developer tools",
         images: [{image: "doritos.gif", duration: 6.53}, {image: "sliding_monkey.gif", duration: 8.88}, {image: "oldest_rope.gif", duration: 5}, {image: "old_rope.gif", duration: 5}, {image: "canvas-zoom.gif", duration: 9.93}, {image: "dance_chimp_nobox.gif", duration: 8.81}, {image: "stillcam_level_editor.gif", duration: 22.99}, {image: "dev_tools.gif", duration: 26.02}, {image: "stuckcam.gif", duration: 8.01}, {image: "smoothcam.gif", duration: 9.57}, {image: "rope_attatched_smoothcam.gif", duration: 8.8}, {image: "rope-nocol-long.gif", duration: 6.49}, {image: "longrope_collisions.gif", duration: 10.99}],
         link: "https://github.com/Cosillow/Hello-Game-physics-based-custom-engine-"
-    },
-    {
-        name: "Remote Logging and Monitoring System",
-        tags: ["Angular", "Bootstrap", "Firebase", "gRPC"],
-        description: "custom library for transdisciplinary artist collective",
-        images: ["masary_home.jpg", "masary_dashboard.jpg", "masary_dashboard_detail.jpg"]
     },
     {
         name: "Personal Portfolio",
