@@ -25,6 +25,13 @@ const projects: any[] = [
         link: "https://github.com/Cosillow/Hello-Game-physics-based-custom-engine-"
     },
     {
+        name: "Shut The Box",
+        tags: ["Python3", "Pygame"],
+        description: "digital version of a childhood game",
+        images: ["shut-the-box.jpg"],
+        link: "https://github.com/Cosillow/Shut-the-box"
+    },
+    {
         name: "Personal Portfolio",
         tags: ["React", "Scss", "Styled-components", "React-redux"],
         description: "react-based custom web portfolio with design emphasis",
