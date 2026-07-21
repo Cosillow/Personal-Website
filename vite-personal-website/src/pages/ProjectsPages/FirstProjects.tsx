@@ -13,12 +13,20 @@ const ProjectCard = styled.article`
 
     display: flex;
     flex-direction: column;
-    height: fit-content;
+    height: 100%;
+`
+
+const CardBody = styled.div`
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 `
 
 const TagsLink = styled.div`
     display: flex;
     align-items: flex-end;
+    margin-top: auto;
+    padding-top: var(--margin-xxl);
 
     & > *:first-child {
         width: 75%;
@@ -35,10 +43,10 @@ const projectCard: React.FC<ProjectCardProps> = (props: ProjectCardProps) => {
     return (
         <ProjectCard key={props.name} className="bg-secondary">
             {props.images && <SingleCarousel images={props.images}></SingleCarousel>}
-            <div className="m-t-s p-h-l p-b-l">
+            <CardBody className="m-t-s p-h-l p-b-l">
                 <h2 className="font-l">{props.name}</h2>
                 <p className="m-t-xxs font-s grey-1">{props.description}</p>
-                <TagsLink className="m-t-xxl">
+                <TagsLink>
                     <p className="font-xs grey-2">
                         {props.tags.map((tag, index) => (
                             <React.Fragment key={index}>
@@ -56,7 +64,7 @@ const projectCard: React.FC<ProjectCardProps> = (props: ProjectCardProps) => {
                     </div>
                     
                 </TagsLink>
-            </div>
+            </CardBody>
         </ProjectCard>
     );
 }
@@ -101,7 +109,7 @@ const ProjectContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 10px;
-    align-items: center;
+    align-items: stretch;
 
     @media (max-width: 600px) {
         grid-template-columns: repeat(1, minmax(250px, 1fr));

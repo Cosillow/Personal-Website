@@ -11,9 +11,7 @@ const DialogModal: any = styled.dialog`
   }
 
   &::backdrop {
-    opacity: 0.1;
-    background-size: 200px 200px;
-    background-image: repeating-linear-gradient(45deg, var(--color-primary-contrast) 0, var(--color-primary-contrast) 2.8000000000000003px, transparent 0, transparent 50%);
+    background-color: rgba(0, 0, 0, 0.5);
   }
 
   background-color: var(--color-secondary);

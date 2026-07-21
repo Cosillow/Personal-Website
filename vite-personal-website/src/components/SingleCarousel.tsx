@@ -10,19 +10,20 @@ const Container: any = styled.div<{
     directionLeft: boolean
 }>`
     position: relative;
-    height: ${props => props.containerWidth / (16/9) }px;
+    aspect-ratio: 16 / 9;
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: top;
+    align-items: center;
     overflow: hidden;
 
     img {
         position: absolute;
-        max-height: 100%;
-        max-width: 100%;
-        object-fit: contain;
-        object-position: cover;
+        inset: 0;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
 
         transform: translateX(0);
         opacity: 1;

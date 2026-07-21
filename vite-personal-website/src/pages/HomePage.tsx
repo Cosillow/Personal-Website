@@ -3,25 +3,23 @@ import styled, { keyframes } from "styled-components";
 import { HEADER_HEIGHT } from "../components/Header";
 
 const HeroSection = styled.section`
-  height: calc(100dvh - ${HEADER_HEIGHT}px);
+  min-height: calc(100dvh - ${HEADER_HEIGHT}px);
   display: flex;
   flex-direction: row;
-  width: 100vw;
   flex-wrap: nowrap;
   overflow-x: hidden;
 
   & > * {
-    flex-basis: 50%;
-    flex-shrink: 1;
+    flex: 1 1 50%;
+    min-width: 0;
   }
 
   @media (max-width: 790px) {
     flex-direction: column-reverse;
+    justify-content: flex-end;
 
     & > * {
-      flex-basis: 20%;
-      flex-shrink: 1;
-      flex-grow: 1;
+      flex: 0 0 auto;
     }
   }
 `;
@@ -36,16 +34,13 @@ const BackgroundImage = styled.div<{
   url: string;
 }>`
   position: relative;
-  width: 400px;
-  height: clamp(30%, 75%, 100%);
+  width: min(400px, 100%);
+  aspect-ratio: 403 / 619;
+  max-height: min(70vh, 100%);
   background-size: cover;
   background-position: top center;
   background-image: ${props => props.url};
   border-bottom: 15px solid var(--color-accent);
-
-  @media (max-width: 790px) {
-    height: 100%;
-  }
 `;
 
 const HomePage = () => {
@@ -59,8 +54,8 @@ const HomePage = () => {
               See Projects
           </Link>
         </InfoHeader>
-        <div className="center-child w-100">
-          <BackgroundImage className="m-h-xxl" url='url("/cropped-connor-photo.png")'></BackgroundImage>
+        <div className="center-child w-100 p-h-xxl">
+          <BackgroundImage url='url("/cropped-connor-photo.png")'></BackgroundImage>
         </div>
     </HeroSection>
     </>
